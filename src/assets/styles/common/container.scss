@@ -1,0 +1,30 @@
+.container {
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include tablet {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  @include laptop {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+}
+.container--mobile {
+  margin-left: auto;
+  margin-right: auto;
+
+  @include tablet {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  @include laptop {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}

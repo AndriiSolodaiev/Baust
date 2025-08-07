@@ -1,0 +1,283 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  
+}
+.header-bg {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid rgba(242, 239, 233, 0.10);
+  height: 77px;
+  transition: all 0.4s ease-out;
+  @include tablet {
+    height: 124px;
+
+  }
+  @include laptop {
+    height: 137px;
+    
+  }
+  &.scroll-down {
+    height: 65px;
+    backdrop-filter: blur(32px);
+    @include tablet {
+    height: 100px;
+  }
+  @include laptop {
+    height: 100px;
+  }
+  }
+
+}
+.logo-wrap {
+display: flex;
+align-items: center;
+height:100%;
+padding-right:16px ;
+border-right: 1px solid rgba(242, 239, 233, 0.10);
+
+@include tablet {
+  padding-right:30px ;
+}
+@include laptop {
+  padding-right:40px ;
+}
+span {
+  @include block-title;
+  text-transform: none;
+  font-weight: 700;
+}
+}
+
+.header-tools__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left:16px;
+width: 100%;
+  @include tablet {
+  padding-left:30px;
+  }
+
+  @include laptop {
+    padding-left:40px;
+  }
+}
+.header-desktop__menu{
+  display: none;
+  @include laptop {
+    display: flex;
+    height: 100%;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+    padding-right:40px;
+    
+  }
+}
+.nav-bar{
+  @include subtitle-text;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-right: auto;
+  
+}
+
+.socials-list {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+   @include tablet {
+    gap: 12px;
+  }
+  @include laptop {
+    gap: 20px;
+  }
+
+  &__item{
+    
+    display: flex;
+    width: 32px;
+    height: 32px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 0.75px solid rgba(242, 239, 233, 0.10);
+    position: relative;
+    overflow: hidden;
+    svg {
+      position: relative;
+      z-index: 2;
+      transition: all 0.3s ease;
+      width: 19.2px;
+      height: 19.2px;
+    }
+     &::before,
+      &::after {
+    content: '';
+    position: absolute;
+    background-color: $accent-color;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    transition: all 0.4s ease;
+    opacity: 0.4;
+    z-index: 1;
+  }
+
+  &::before {
+    transform: rotate(180deg) translate(0%, -100%);
+  }
+
+  &::after {
+    transform: rotate(180deg) translate(0%, 100%);
+  
+  }
+  &:hover {
+    // border-color: #9691912d;
+    
+    &::before {
+      
+      transform: rotate(180deg) translate(0%, -50%);
+    }
+
+    &::after {
+     
+      transform: rotate(180deg) translate(0%, 50%);
+    }
+    svg {
+      
+      transform: scale(1.4) ;
+    }
+  }
+  @include tablet {
+    width: 42px;
+height: 42px;
+svg {
+  width: 25.2px;
+height: 25.2px;
+}
+  }
+    @include laptop {
+      width: 40px;
+height: 40px;
+svg {
+  width: 24px;
+height: 24px;
+}
+    }
+  }
+}
+
+.header-btn {
+  border-radius: 8px;
+  background: $text-color;
+  padding:14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 16px ;
+  span {
+    @include subtitle-text;
+    font-size: 14px;
+    font-weight: 500;
+    color: $bc;
+    white-space: nowrap;
+  }
+  @include tablet {
+    padding: 20px 40px;
+    margin-left: 30px ;
+  }
+  @include laptop  {
+    padding: 24px 20px;
+    margin-left: 40px;
+    width: 19.6vw
+  }
+}
+
+.menu-btn{
+  
+  display: flex;
+  align-items: center;
+  gap: 8px;
+   @include tablet {gap: 12px;}
+  @include laptop {display: none;}
+
+  span {
+    @include subtitle-text;
+    font-weight: 500;
+  }
+}
+.menu-burger {
+  width: 32px;
+height: 32px;
+position: relative;
+overflow: hidden;
+border-radius: 50%;
+background-color: rgba(242, 239, 233, 0.10);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+ &::before,
+      &::after {
+    content: '';
+    position: absolute;
+    background-color: $accent-color;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    transition: all 0.4s ease;
+    opacity: 0.4;
+    z-index: 1;
+  }
+
+  &::before {
+    transform: rotate(180deg) translate(0%, -100%);
+  }
+
+  &::after {
+    transform: rotate(180deg) translate(0%, 100%);
+  
+  }
+  &:hover {
+    
+    
+    &::before {
+      
+      transform: rotate(180deg) translate(0%, -50%);
+    }
+
+    &::after {
+     
+      transform: rotate(180deg) translate(0%, 50%);
+    }
+    
+  }
+  span {
+    position: relative;
+    z-index: 3;
+    height: 2px;
+    width: 14px;
+    border-radius: 4px;
+    background-color: $text-color;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  }
+ @include tablet {
+    width: 42px;
+height: 42px;
+span {
+  width: 20px;
+}
+  }
+}

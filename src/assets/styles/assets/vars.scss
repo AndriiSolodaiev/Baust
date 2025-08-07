@@ -1,0 +1,121 @@
+$default-font: 'Inter', sans-serif;
+
+
+$mc2: #ff554c;
+$mc3: #e5df06;
+$mc4: #4f90b6;
+$gray: #333;
+$text: #22223e;
+$wc: #fff;
+$bc: #333;
+$bc2: #000;
+
+$bg-color: #3F5644;
+$accent-color: #E0F09D;
+$text-color: #F2EFE9;
+
+@mixin super-title () {
+	font-size: 66px;
+	font-family: $default-font;
+	font-weight: 700;
+	font-style: normal;
+	line-height: 80%;
+	text-decoration: none;
+	color: $text-color;
+
+	@include tablet {
+		font-size: 17.9vw;
+	}
+
+	@include laptop {
+		font-size: 16.1vw;
+	}
+}
+
+@mixin section-title () {
+	font-size: 66px;
+	font-family: $default-font;
+	font-weight: 700;
+	font-style: normal;
+	line-height: 80%;
+	text-decoration: none;
+	color: $text-color;
+
+	@include tablet {
+		font-size: 11.9vw;
+	}
+
+	@include laptop {
+		font-size: 7.3vw;
+	}
+}
+
+@mixin article-title () {
+	font-size: 24px;
+	font-family: $default-font;
+	font-weight: 600;
+	font-style: normal;
+	line-height: 130%;
+	text-decoration: none;
+	text-transform: uppercase;
+
+	@include tablet {
+		font-size: 4.16vw;
+	}
+
+	@include laptop {
+		font-size: 2.18vw;
+	}
+}
+
+@mixin block-title () {
+	font-size: 18px;
+	font-family: $default-font;
+	font-weight: 600;
+	font-style: normal;
+	line-height: 130%;
+	text-decoration: none;
+	text-transform: uppercase;
+
+	@include tablet {
+		font-size: 20px;
+	}
+
+	@include laptop {
+		font-size: 1.25vw
+	}
+}
+
+@mixin subtitle-text() {
+	font-size: 18px;
+	font-family: $default-font;
+	font-weight: 400;
+	font-style: normal;
+	color: $text-color;
+	line-height: 120%;
+	text-decoration: none;
+	text-transform: none;
+
+	@include tablet {
+		font-size: 18px;
+	}
+
+	@include laptop {
+		font-size: 1.25vw;
+	}
+}
+
+@mixin general-text() {
+	font-size: 16px;
+	font-family: $default-font;
+	font-weight: 400;
+	font-style: normal;
+	line-height: 120%;
+
+	text-decoration: none;
+	text-transform: none;
+
+	@include laptop {
+		font-size: 0.93vw;
+	}
+}
