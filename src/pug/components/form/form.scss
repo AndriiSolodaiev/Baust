@@ -1,5 +1,7 @@
 .overflow {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
@@ -21,29 +23,30 @@
   top:50%;
   left:50%;
   transform: translate(-50%, -50%);
-  width: 90%;
+  width: calc(100% - 32px);
   background: $bg-color;
   border: none;
   transition: transform 0.3s ease-in-out 0.3s, opacity 0.3s ease 0.3s;
   opacity: 1;
   padding: 20px;
-  padding-bottom: 28px;
+  
+  border-radius: 12px;
   .hidden & {
     transform: translate(-50%, -50%) scale(1.2);
     opacity: 0;
   }
   @include tablet {
-    padding: 40px;
-    width: 523px;
-    top:50%;
-    left:50%;
-   
-    transform: translate(-50%, -50%);
+    padding: 20px;
+    width: calc(100% - 60px);
+    
   }
   
-  @include desktop{
-    width: 580px;
+  @include laptop {
+    width: 47%;
   }
+}
+.tablet.landscape .modal-form{
+  max-width: 60%;
 }
 .call-us__container {
   position: absolute;
@@ -80,19 +83,31 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
+  border-radius: 50%;
+  background-color: $text-color;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+@include tablet {
   top: 20px;
   right: 20px;
-  
+  width: 42px;
+height: 42px;
 
   svg {
-    width: 14px;
-    height: 14px;
+    width: 24px;
+height: 24px;
   }
-
+}
   @include laptop {
-    top: 30px;
-    right: 30px;
+    top: 20px;
+    right: 20px;
   }
 
   @include desktop {
@@ -101,45 +116,25 @@
   }
 }
 
-.call-us__title-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  width: 100%;
-  margin-bottom: 48px;
-
-  h2 {
-    
-   
-  }
-
-  p {
-    @include general-text;
-   
-
-    @include tablet {
-      width: 324px;
-    }
-
-    @include laptop {
-      width: 500px;
-    }
-
-    @include desktop {
-      width: 600px;
-    }
-  }
-
+.form-title{
+  text-align: center;
+  @include block-title;
+  margin-bottom: 20px;
   @include tablet {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 100px;
+    font-size: 4.16vw;
+    margin-bottom: 40px;
+  }
+  @include laptop {
+    margin-bottom: 60px;
+    font-size: 2.18vw;
+    text-transform: none;
   }
 }
-
+.tablet.landscape {
+  font-size: 3.18vw;
+}
 .form {
-
+  width: 100%;
   @include tablet {}
 
   @include laptop {}
@@ -149,8 +144,8 @@
 
 .inputs-wrapper {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 20px;
   width: 100%;
 
   @include tablet {
@@ -167,21 +162,52 @@
 }
 
 .input-title {
+  opacity: 0;
+  pointer-events: none;
+  color: rgba(242, 239, 233, 0.5);
   @include general-text;
-  
-  text-transform: uppercase;
-  
-
-  @include tablet {}
-
+  font-size: 12px;
+  position: absolute;
+  text-transform: none;
+  z-index: 2;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.25s ease-out;
+  border-radius: 8px;
+  background-color: $bg-color;
+  padding: 4px 12px;
   @include laptop {
-   
+    font-size: 0.93vw;
   }
-
-  @include desktop {}
+}
+.footer {
+  .input-title {
+    background-color: $bc;
+  }
 }
 .form-field{
   position: relative;
+  width: 100%;
+  &.is-focused {
+    .input-title {
+      opacity: 1;
+    }
+  }
+  &[data-field-name], &[data-field-phone] {
+    position: relative;
+    &::after {
+      content: "*";
+      color: $text-color;
+      position: absolute;
+      z-index: 2;
+      top:7px;
+      right: 7px;
+    }
+  }
+  @include tablet {
+  width: calc(50% - 10px);
+ }
 }
 .input-message {
   position: absolute;
@@ -189,83 +215,68 @@
   // left: 50%;
   // transform: translateX(-50%);
   z-index: 2;
-  color: red;
+  color: rgb(255, 131, 131);
 }
 .form-field__input {
+  @include general-text;
   width: 100%;
-  padding: 13px 20px;
-
+  padding: 22.5px 20px;
+  border-radius: 8px;
+  background: rgba(242, 239, 233, 0.05);
+  backdrop-filter: blur(75px);
+  -webkit-backdrop-filter: blur(75px);
+  text-align: center;
+  border-color: transparent;
+  color: $text-color;
   
-  border-radius: 6px;
- 
-
- 
+ &[name="phone"] {
+  text-align: start;
+ }
 
   &::placeholder {
-    
+    @include general-text;
+    opacity: 0.5;
+    color: $text-color;
     
   }
- &:focus {
+  &:focus {
+    border-color: rgba(242, 239, 233, 0.10);
+  }
  
-
- }
-  @include tablet {
-    
-    padding: 13px  20px;
-  }
-
-  @include laptop {
-    
-  }
-
-  @include desktop {
-    padding: 13px 20px;
-  }
 }
 .text-input{
   resize: none;
 
 }
-.form__button {
-  justify-self: flex-end;
 
- 
-  width: fit-content;
-
-  &:hover .submit-btn__text {
-    
-    position: relative;
-    z-index: 1;
+.form-field-textarea {
+  width: 100%;
+  textarea {
+    height: 120px;
+  @include tablet {
+    height: 202px;
   }
-}
-
-.form__button-svg {
-  transform: scale(1.25);
-
   @include laptop {
-    transform: translateY(50%) scale(1.25);
+    height: 180px;
+  }
   }
 }
+
 
 .form__button-wrapper {
   margin-top: 20px;
-
+  width: 100%;
+  .general-btn {
+    width: 100%;
+  }
   @include tablet {
-    
-  }
-
-  @include laptop {}
-
-  @include desktop {}
-
- 
-}
-
-.submit-btn__text {
-  @include laptop {
-    
+    margin-top: 40px;
   }
 }
+
+
+
+
 
 .iti__flag {
   background-image: url('../images/libs/flags.png');
@@ -284,8 +295,8 @@
 }
 
 .footer .iti--allow-dropdown input {
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: 56px;
+  padding-right: 20px;
 
   @include laptop {
     padding-left: 56px;
@@ -298,8 +309,15 @@
   left: 0;
   width: auto;
   height: auto;
+  background: rgba(242, 239, 233, 0.05);
+  backdrop-filter: blur(75px);
+  -webkit-backdrop-filter: blur(75px);
+  border-radius: 12px;
+  border-color: transparent;
 }
-
+.iti__arrow {
+  border-top: 4px solid $text-color;
+}
 
 
 .iti__mobile {

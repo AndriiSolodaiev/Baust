@@ -9,22 +9,26 @@ mixin form(attr)
 			//- .form-description.text-style-body Залишіть контактні дані і ми обов'язково зв'яжемося з вами
 			.inputs-wrapper
 				.form-field.form-field-input(data-field-input data-field-name data-status="field--inactive").first-offset
-					.input-title Введіть Ваше ім’я
-					input(type='text' name="name" placeholder="Ім’я:").form-field__input
+					.input-title Name
+					input(type='text' name="name" placeholder="Name").form-field__input
 					.input-message(data-input-message)
 				.form-field.form-field-input(data-field-input data-field-phone data-status="field--inactive")
-					.input-title Введіть Ваш телефон
-					input(type='text' name="phone" placeholder="Телефон:").form-field__input
+					.input-title Phone
+					input(type='text' name="phone" placeholder="Phone").form-field__input
 					.input-message(data-input-message)
 				//- .form-field.disabled.form-field-input(data-field-input data-field-email data-status="field--inactive")
 				//- 	.input-title.text-style-h-4.text-gray Email:
 				//- 	input(type='text' name="email" placeholder="Введіть email").form-field__input
 				//- 	.input-message(data-input-message)
-				.form-field.form-field-input(data-field-input data-field-comment data-status="field--inactive")
-					.input-title Коментар:
-					textarea(type='text' name="comment" placeholder="Введіть повідомлення").form-field__input.text-input
+				.form-field.form-field-input.form-field-textarea(data-field-input data-field-comment data-status="field--inactive")
+					.input-title Comment
+					textarea(type='text' name="comment" placeholder="Comment").form-field__input.text-input
 					.input-message(data-input-message)
 			.form__button-wrapper
-				
-				button( type="submit" data-btn-submit).general-button
-					span.submit-btn__text(data-btn-submit-text) НАДІСЛАТИ ПОВІДОМЛЕННЯ
+				button( type="submit" data-btn-submit).general-btn
+					.hover-wrap
+						.svg-wrap 
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+								<path d="M7.22703 6.77297H16.773V16.3189M16.1101 7.43588L6.43153 17.1144" stroke="#E0F09D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+							</svg>
+						span.submit-btn__text(data-btn-submit-text) Book a Call

@@ -1,16 +1,8 @@
-import Swiper, { Autoplay, EffectFade } from 'swiper';
-import { Navigation } from 'swiper';
-import 'swiper/css';
-import 'swiper/css/effect-fade';
+import Swiper, { Autoplay, EffectFade, Navigation } from 'swiper';
 import { gsap, ScrollTrigger, CustomEase, CSSRulePlugin } from 'gsap/all';
 
 
-import '../modules/helpers/imgParallax';
 
-
-import { initSmoothScrolling } from '../modules/scroll/leniscroll';
-
-initSmoothScrolling();
 gsap.registerPlugin(ScrollTrigger, CustomEase, CSSRulePlugin);
 
 
@@ -73,7 +65,7 @@ tl.from(".svg-map-wrap", {
 
 const beforeRule = CSSRulePlugin.getRule(".filler::before");
 const afterRule = CSSRulePlugin.getRule(".filler::after");
-
+console.log(beforeRule)
 const tlFiller = gsap.timeline({
   scrollTrigger: {
     trigger: ".filler",

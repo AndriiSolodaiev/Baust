@@ -1,0 +1,233 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'single-glamping'
+    var id_page = 'id-page-single-glamping'
+    var class_page = 'class-page-single-glamping'
+    var headerCustomClass = 'type1' 
+    var breadcrumbsSubitem = [
+      {
+        label: 'About',
+        link: pagesLink[0].about
+      }
+    ]
+  
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  script(defer src='./assets/scripts/header.bundle.js')
+  script(defer src='./assets/scripts/footer.bundle.js')
+  script(defer src='./assets/scripts/singleGlamping.bundle.js')
+block content
+  section.filler.sg
+    .video-frame 
+      img(src="./assets/images/glampings.jpg ", alt="")
+    .container
+      h1.section-title Glamping
+
+        br
+        span #22.01
+      
+      p.section-descr.mobile-mode Modular glamping unit, ready for any climate, priced at 
+        span.accent-color €70,000.
+    .hero-bottom-block 
+      p.section-descr.tablet-mode Modular glamping unit, ready for any climate, priced at 
+        span.accent-color €70,000.
+      a(href="/houses").general-btn
+        .hover-wrap
+          .svg-wrap 
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M7.22703 6.77297H16.773V16.3189M16.1101 7.43588L6.43153 17.1144" stroke="#E0F09D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          span Get ROI Calculator
+  section.details.container 
+    .details-container
+      .planning-explication-block
+        .planning-img-wrap
+          img(src="./assets/images/glamping-plan.png", alt="glamping plan")
+        .explication-wrap   
+          .explication-title Layout & Dimensions:
+          .card__descr-wrap 
+            .card__descr-item 
+              h4.card__descr-item__title Main room:
+              .card__descr-item__blank 
+              p.card__descr-item__value 19.15 m²
+            .card__descr-item 
+              h4.card__descr-item__title Bathroom:
+              .card__descr-item__blank 
+              p.card__descr-item__value 4.67 m²
+            .card__descr-item 
+              h4.card__descr-item__title Terrace:
+              .card__descr-item__blank 
+              p.card__descr-item__value 10.28 m²
+            .card__descr-item 
+              h4.card__descr-item__title Total area:
+              .card__descr-item__blank 
+              p.card__descr-item__value 23.8 m²
+            .card__descr-item 
+              h4.card__descr-item__title Structure:
+              .card__descr-item__blank 
+              p.card__descr-item__value Two modules
+            .card__descr-item 
+              h4.card__descr-item__title Construction:
+              .card__descr-item__blank 
+              p.card__descr-item__value Solid timber frame
+            .card__descr-item 
+              h4.card__descr-item__title Weight
+              .card__descr-item__blank 
+              p.card__descr-item__value ~7.5 tons
+          button.general-btn(data-call-us-btn)
+            .hover-wrap
+              .svg-wrap 
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M7.22703 6.77297H16.773V16.3189M16.1101 7.43588L6.43153 17.1144" stroke="#E0F09D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              span Book a call
+      .room-tour-wrap(data-iframe-open data-iframe-src="https://apartment-tours.smartorange.com.ua/mulberry/?scene=0") 
+        img(src="./assets/images/image.jpg", alt="iframe")
+        .room-tour-overlay 
+          .top-text-wrap 
+            p Room tour
+            <svg xmlns="http://www.w3.org/2000/svg" width="331" height="42" viewBox="0 0 331 42" fill="none">
+              <path d="M38.0251 1L46 7.2549C18.1062 10.8386 1 15.6763 1 20.9997C1 32.0456 74.6492 41 165.5 41C256.351 41 330 32.0456 330 20.9997C330 15.6129 312.484 10.7236 284 7.12754L291.812 1" stroke="#F2EFE9" stroke-width="2"/>
+            </svg>
+          button(data-popup-tour-btn).project-card__bottom 
+            p View interior 360°
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+              <path d="M8.22703 8.77297H17.773V18.3189M17.1101 9.43588L7.43153 19.1144" stroke="#F2EFE9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+  section.features.container
+    .big-b b
+    .decor-svg 
+      <svg xmlns="http://www.w3.org/2000/svg" width="768" height="871" viewBox="0 0 768 871" fill="none">
+      <g filter="url(#filter0_f_919_7155)">
+      <path d="M807 693H-38V663.568L807 8V693Z" fill="url(#paint0_linear_919_7155)"/>
+      </g>
+      <defs>
+      <filter id="filter0_f_919_7155" x="-215.6" y="-169.6" width="1200.2" height="1040.2" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="88.8" result="effect1_foregroundBlur_919_7155"/>
+      </filter>
+      <linearGradient id="paint0_linear_919_7155" x1="-48.3973" y1="710.605" x2="883.19" y2="229.066" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E0F09D"/>
+      <stop offset="1" stop-color="#E0F09D" stop-opacity="0"/>
+      </linearGradient>
+      </defs>
+      </svg>
+    h2.features-title Features
+      span Key
+    .swiper-process 
+      .swiper-wrapper 
+        .swiper-slide 
+          .process__img-wrap 
+            img(src="./assets/images/feature1.jpg", alt="process step 1")
+          .process__text-wrap
+            h3.process__item-title Sleeps 2
+            p.process__item-descr A thoughtfully designed and cozy retreat, offering all the essentials for a peaceful and comfortable stay for two guests.
+        .swiper-slide 
+          .process__img-wrap 
+            img(src="./assets/images/feature2.jpg", alt="process step 2")
+          .process__text-wrap
+            h3.process__item-title 24 m² interior
+            p.process__item-descr Smart use of 24 m² provides a spacious feel with modern design, combining style, function, and comfort in every corner.
+        .swiper-slide.empty
+        .swiper-slide 
+          .process__img-wrap 
+            img(src="./assets/images/feature3.jpg", alt="process step 3")
+          .process__text-wrap
+            h3.process__item-title ‑35 °C → +40 °C certified
+            p.process__item-descr Built to perform in any climate — from freezing winters to scorching summers — ensuring year-round comfort and protection.
+        .swiper-slide.empty
+        .swiper-slide 
+          .process__img-wrap 
+            img(src="./assets/images/feature4.jpg", alt="process step 4")
+          .process__text-wrap
+            h3.process__item-title Plug‑&‑Play utilities
+            p.process__item-descr No hassle setup — all utilities are pre-installed and ready to use, so you can settle in and start living right away.
+        .swiper-slide 
+          .process__img-wrap 
+            img(src="./assets/images/feature5.jpg", alt="process step 4")
+          .process__text-wrap
+            h3.process__item-title Full bath & kitchen
+            p.process__item-descr Enjoy home-like convenience with a full bathroom and kitchen, giving you complete independence during your stay.
+  section.room-tour 
+    iframe( src="https://apartment-tours.smartorange.com.ua/mulberry/?scene=0" loading="lazy")
+    .room-tour-block 
+    .top-text-wrap 
+      p Room tour
+      <svg xmlns="http://www.w3.org/2000/svg" width="331" height="42" viewBox="0 0 331 42" fill="none">
+        <path d="M38.0251 1L46 7.2549C18.1062 10.8386 1 15.6763 1 20.9997C1 32.0456 74.6492 41 165.5 41C256.351 41 330 32.0456 330 20.9997C330 15.6129 312.484 10.7236 284 7.12754L291.812 1" stroke="#F2EFE9" stroke-width="2"/>
+      </svg>  
+    .room-tour-btns-wrap
+      button.header-btn(data-mobile-explore) 
+        .hover-wrap
+          span Explore tour
+      button.header-btn(data-mobile-pause) 
+        .hover-wrap
+          span Pause
+  section.gallery 
+    .swiper-gallery 
+      .swiper-btn-wrap.container 
+        .swiper-button-prev(data-gallery-prev-btn)
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M11.8353 18.8047L5.08525 12.0547L11.8353 5.30469M6.02275 12.0547L19.7103 12.0547" stroke="#333333" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        .swiper-button-next(data-gallery-next-btn)
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12.1648 5.19531L18.9148 11.9453L12.1648 18.6953M17.9773 11.9453L4.28979 11.9453" stroke="#333333" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+      .slider-numbers
+        span.current-slides-number 01
+        span /
+        span.total-slides-number 02
+      .swiper-wrapper 
+        .swiper-slide 
+          img(src="./assets/images/glampings.jpg", alt="glamping")
+        .swiper-slide 
+          img(src="./assets/images/glampings.jpg", alt="glamping")
+        .swiper-slide 
+          img(src="./assets/images/glampings.jpg", alt="glamping")
+  section.section.operating.process.container
+    .title-wrap
+      h2.section-title Use
+        br
+        | Cases
+      p.section-descr Our modular units serve a variety of needs — from hospitality to business. Whether it’s a cozy retreat, a workspace, or a mobile sales point, they offer flexibility, quick setup, and modern comfort.
+    .swiper-cases 
+      .swiper-wrapper 
+        .swiper-slide 
+          .process__img-wrap 
+            img(src="./assets/images/cases1.jpg", alt="process step 1")
+          .process__text-wrap
+            h3.process__item-title Hotel rooms
+            p.process__item-descr Stylish, self-contained spaces ideal for both short getaways and extended stays. Easy to install and operate in remote or urban areas.
+        .swiper-slide 
+          .process__img-wrap 
+            img(src="./assets/images/cases2.jpg", alt="process step 2")
+          .process__text-wrap
+            h3.process__item-title Guest house
+            p.process__item-descr A private, fully equipped unit that adds comfort and flexibility to your property — perfect for hosting friends, family, or even renters.
+        .swiper-slide 
+          .process__img-wrap 
+            img(src="./assets/images/cases3.jpg", alt="process step 3")
+          .process__text-wrap
+            h3.process__item-title Office
+            p.process__item-descr A quiet, dedicated space for focus, productivity, and comfort — perfect for remote work, creative tasks, or meetings.
+        .swiper-slide 
+          .process__img-wrap 
+            img(src="./assets/images/cases4.jpg", alt="process step 4")
+          .process__text-wrap
+            h3.process__item-title Sales office
+            p.process__item-descr A mobile, branded space you can deploy quickly at any location — ideal for real estate viewings, pop-up events, or client meetings.      
+   
+block footer
+  include ../includes/footer.pug
+
+block header
+  include ../includes/header.pug

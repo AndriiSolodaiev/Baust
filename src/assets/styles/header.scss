@@ -116,19 +116,22 @@ width: 100%;
       transition: all 0.3s ease;
       width: 19.2px;
       height: 19.2px;
+      path {
+        transition: all 0.3s ease;
+      }
     }
      &::before,
       &::after {
     content: '';
     position: absolute;
-    background-color: $accent-color;
+    background-color: $bc;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
     pointer-events: none;
     transition: all 0.4s ease;
-    opacity: 0.4;
+    // opacity: 0.4;
     z-index: 1;
   }
 
@@ -179,12 +182,45 @@ height: 24px;
 .header-btn {
   border-radius: 8px;
   background: $text-color;
-  padding:14px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding:8px;
   margin-left: 16px ;
+  .hover-wrap {
+    padding:8px;
+    width: 100%;
+    position:relative;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      background-color: $bc;
+      transform: translateX(-100%);
+      z-index: 1;
+      transition: transform 0.8s $cubic-btn;
+    }
+  }
+  &:hover {
+    .hover-wrap::before {
+      transform: translateX(0);
+    }
+    
+    span {
+      color: $text-color;
+    }
+
+  }
   span {
+    position: relative;
+    z-index: 2;
+    transition: color 0.4s ease-in-out;
     @include subtitle-text;
     font-size: 14px;
     font-weight: 500;
@@ -192,13 +228,19 @@ height: 24px;
     white-space: nowrap;
   }
   @include tablet {
-    padding: 20px 40px;
+    padding:8px;
     margin-left: 30px ;
+    .hover-wrap {
+    
+  padding: 12px 32px;}
   }
   @include laptop  {
-    padding: 24px 20px;
+    padding:8px;
     margin-left: 40px;
-    width: 19.6vw
+    width: 19.6vw;
+    .hover-wrap {
+    
+    padding: 16px 12px;}
   }
 }
 
@@ -280,4 +322,134 @@ span {
   width: 20px;
 }
   }
+}
+
+.header-bg.menu-is-open {
+  .menu-burger {
+    .over {
+      opacity: 0;
+    }
+
+    .middle {
+      transform: rotate(45deg);
+    }
+
+    .under {
+      transform: rotate(-45deg) translate(3px, -4px);
+    }
+  }
+}
+
+.menu-overlay {
+  position: fixed;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  transition: all 0.3s ease-in-out;
+  background-color: $bg-color;
+  pointer-events: all;
+  display: flex;
+  flex-direction: column;
+
+   @include tablet {
+    
+  }
+  @include laptop {
+    display: none;
+  }
+  &.hidden {
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
+  }
+  
+}
+
+.menu-container {
+
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  gap:20px;
+  width: 100%;
+ 
+  padding: 16px;
+  @include tablet {
+    gap: 40px;
+    padding: 30px;
+  }
+  
+}
+.menu-item {
+  @include section-title;
+	@include tablet {
+    font-size: 92px;
+  }
+  
+    span {
+    display: inline-block;
+    transition: transform 0.4s ease-in-out;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+  }
+   .menu-face {
+    display: inline-block;
+    width: 100%;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    transform-origin: center;
+    backface-visibility: hidden;
+    color: $text-color;
+    
+  }
+
+  .menu-face--front {
+    transform: rotateX(0deg);
+  }
+
+  .menu-face--back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform:  translateX(100%) ;
+    opacity: 0;
+    text-decoration:underline;
+  }
+
+}
+.menu-bottom {
+ 
+ border-top: 1px solid rgba(242, 239, 233, 0.10);
+
+}
+.social-block {
+  padding: 16px;
+  width: fit-content;
+  border-right: 1px solid rgba(242, 239, 233, 0.10);
+  @include tablet {
+    padding: 30px;
+  }
+  .block-label {
+    color: $text-color;
+    opacity: 0.5;
+    font-family: $default-font;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; 
+    margin-bottom: 8px;
+    @include tablet {
+      margin-bottom: 12px;
+    }
+  }
+  .socials-list {
+    display: flex;
+  }
+}
+
+
+.accent-color {
+  color: $accent-color;
 }

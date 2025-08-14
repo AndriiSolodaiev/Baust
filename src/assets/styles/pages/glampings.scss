@@ -1,0 +1,302 @@
+.swiper-hero{
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.80) 0%, rgba(0, 0, 0, 0.00) 23.2%), linear-gradient(180deg, rgba(0, 0, 0, 0.00) 76.06%, rgba(0, 0, 0, 0.90) 100%), linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%);
+  }
+
+  .swiper-slide {
+    img{object-fit: cover;
+    width: 100%;
+    height: 100%;}
+    
+  }
+}
+.glampings{
+  position: relative;
+  .section-title,
+.glampings-descr,
+.current-slides-number {
+  will-change: transform, opacity;
+}
+  .hero-bottom-block{
+    align-items: center;
+  }
+  &-descr-wrap {
+    display: flex;
+    align-items: center;
+  }
+  &-descr {
+    margin-top: 20px;
+    &:first-child {
+      padding-left: 16px;
+      border-right: 1px solid rgba(242, 239, 233, 0.10);
+      padding-left: 0;
+      padding-right: 16px;
+    }
+    @include tablet {
+      margin-top: 30px;
+      padding-left: 30px;
+      &:first-child {
+        padding-left: 0;
+        padding-right: 30px;
+      }
+    }
+    @include laptop {
+      margin-top: 40px;
+      padding-left: 40px;
+      &:first-child {
+        padding-left: 0;
+        padding-right: 40px;
+      }
+    }
+  }
+  &-descr__label {
+    @include subtitle-text;
+    color: $text-color;
+    margin-bottom: 4px;
+    @include laptop {
+      margin-bottom: 20px;
+    }
+  }
+  &-descr__value {
+    @include article-title;
+    color:$accent-color;
+
+  }
+}
+.slider-numbers{
+  .tablet-mode {
+  display: none;
+  @include tablet {
+    display: flex;}}
+    display: flex;
+  gap:8px;
+  @include subtitle-text;
+  color: $text-color;
+  .current-slides-number {
+    opacity: 0.6;
+  }
+  }
+  
+
+
+.discover {
+  position: relative;
+  padding-bottom: 120px;
+  padding-top: 120px;
+  @include tablet {
+    padding-bottom: 140px;
+    padding-top: 140px;
+  }
+  @include laptop {
+    padding-bottom: 180px;
+    padding-top: 180px;
+  }
+  .big-b {
+    position: absolute;
+  z-index: -1;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  }
+  &-title {
+    @include super-title;
+    color: $accent-color;
+    margin-bottom: 60px;
+    @include tablet {
+    margin-bottom: 70px;
+    }
+    @include laptop {
+    margin-bottom: 120px;
+    white-space: nowrap;
+    }
+    span {
+      display: block;
+      margin-left: 28px;
+      @include tablet {
+        margin-left: auto;
+        text-align: end;
+        margin-right: 57px;
+      }
+      @include laptop {
+        margin-left: 0;
+        margin-right: 0px;
+        text-align: start;
+        display: inline;
+      }
+    }
+  }
+
+}
+.swiper-discover {
+  position: relative;
+  @include laptop {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+  .card {
+    display: block;
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(242, 239, 233, 0.10);
+    
+
+    &__img-wrap {
+    width: 100%;
+    padding: 8px;
+    padding-bottom: 0;
+    overflow: hidden;
+    aspect-ratio: 1/0.68;
+    @include tablet {
+      padding: 10px;
+    }
+    img {
+      border-radius: 8px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  &__content {
+    padding: 16px;
+     @include tablet {
+      padding: 20px;
+    }
+    @include laptop {
+      padding: 30px;
+    }
+  }
+  &-title {
+    @include article-title;
+    color: $text-color;
+    margin-bottom: 20px;
+     @include tablet {
+      margin-bottom: 30px;
+    }
+    
+  }
+  &__descr-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+  }
+  &__descr-item{
+    display: flex;
+    align-items: flex-end;
+    gap:12px;
+    &__title{
+      @include general-text;
+      color: $text-color;
+    }
+    &__blank {
+      height: 1px;
+      flex-grow:2;
+      border-bottom: 1px dashed #fff;
+      opacity: 0.1;
+    }
+    &__value {
+      @include general-text;
+      color:$accent-color;
+    }
+  }
+&__cost-btn-wrap {
+  border-top: 1px solid rgba(242, 239, 233, 0.10);
+  padding:16px;
+  @include tablet {
+      padding: 20px;
+    }
+    @include laptop {
+      padding: 30px;
+    }
+}
+
+&__cost {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include general-text;
+  color: $text-color;
+  margin-bottom: 32px;
+  @include tablet {
+      margin-bottom: 40px;
+    }
+    @include laptop {
+      margin-bottom: 60px;
+    }
+  span {
+    opacity: 0.5;
+    &.card__cost-value {
+      @include block-title;
+      opacity: 1;
+    }
+  }
+}
+.general-btn {
+  width: 100%;
+}
+
+  }
+}
+
+  
+
+.swiper-btn-wrap {
+  display: none;
+  @include laptop {
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding-left: 40px;
+    padding-right: 40px;
+    pointer-events: none;
+    cursor: pointer;
+  }
+
+}
+
+.swiper-button-prev,  .swiper-button-next {
+width: 42px;
+height: 42px;
+@include tablet {width: 64px;
+height: 64px;}
+@include laptop {width: 78px;
+  height: 78px;}
+  
+  border-radius: 8px;
+  border: 1px solid rgba(224, 240, 157, 0.40);
+  background: $text-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s ease-in-out;
+  pointer-events: all;
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+  &.swiper-button-disabled {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+}

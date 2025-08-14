@@ -1,0 +1,265 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'saunas'
+    var id_page = 'id-page-saunas'
+    var class_page = 'class-page-saunas'
+    var headerCustomClass = 'type1' 
+    var breadcrumbsSubitem = [
+      {
+        label: 'About',
+        link: pagesLink[0].about
+      }
+    ]
+  
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  script(defer src='./assets/scripts/header.bundle.js')
+  script(defer src='./assets/scripts/footer.bundle.js')
+  script(defer src='./assets/scripts/saunas.bundle.js')
+block content
+  section.hero.glampings
+    .swiper-hero
+      .swiper-wrapper
+        .swiper-slide(data-title="Sauna L" data-from="€ 17 900" data-area="19.15 m²" data-link="/house1")
+          img(src="./assets/images/glampings.jpg", alt="glamping S")
+        .swiper-slide(data-title="Sauna M" data-from="€ 22 500" data-area="25.5 m²" data-link="/house2")
+          img(src="./assets/images/card2.jpg", alt="glamping M")
+        .swiper-slide(data-title="Sauna S" data-from="€ 28 500" data-area="25.5 m²" data-link="/house3")
+          img(src="./assets/images/card1.jpg", alt="glamping M")
+    .container
+      h1.section-title Sauna L
+      .glampings-descr-wrap
+        .glampings-descr
+          p.glampings-descr__label From:
+          p.glampings-descr__value € 17 900
+        .glampings-descr
+          p.glampings-descr__label Total area:
+          p.glampings-descr__value 19.15 m²
+    .hero-bottom-block
+      .slider-numbers.tablet-mode
+        span.current-slides-number 01
+        span /
+        span.total-slides-number 02
+      a(href="/single-sauna.html" data-house-link).general-btn
+        .hover-wrap
+          .svg-wrap
+            svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none")
+              path(d="M7.22703 6.77297H16.773V16.3189M16.1101 7.43588L6.43153 17.1144" stroke="#E0F09D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round")
+          span House viewing
+  section.discover.container
+    .big-b b
+    .decor-svg 
+      <svg xmlns="http://www.w3.org/2000/svg" width="768" height="871" viewBox="0 0 768 871" fill="none">
+      <g filter="url(#filter0_f_919_7155)">
+      <path d="M807 693H-38V663.568L807 8V693Z" fill="url(#paint0_linear_919_7155)"/>
+      </g>
+      <defs>
+      <filter id="filter0_f_919_7155" x="-215.6" y="-169.6" width="1200.2" height="1040.2" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="88.8" result="effect1_foregroundBlur_919_7155"/>
+      </filter>
+      <linearGradient id="paint0_linear_919_7155" x1="-48.3973" y1="710.605" x2="883.19" y2="229.066" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E0F09D"/>
+      <stop offset="1" stop-color="#E0F09D" stop-opacity="0"/>
+      </linearGradient>
+      </defs>
+      </svg>
+    h2.discover-title Discover 
+      span More
+    .swiper-discover 
+      .swiper-btn-wrap 
+        .swiper-button-prev(data-discover-prev-btn)
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M11.8353 18.8047L5.08525 12.0547L11.8353 5.30469M6.02275 12.0547L19.7103 12.0547" stroke="#333333" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        .swiper-button-next(data-discover-next-btn)
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12.1648 5.19531L18.9148 11.9453L12.1648 18.6953M17.9773 11.9453L4.28979 11.9453" stroke="#333333" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+      .swiper-wrapper
+        .swiper-slide
+          a(href="/house1").card
+            .card__img-wrap 
+              img(src="./assets/images/card1.jpg", alt="glamping1")
+            .card__content
+              h3.card-title Sauna S 
+              .card__descr-wrap 
+                .card__descr-item 
+                  h4.card__descr-item__title Capacity:
+                  .card__descr-item__blank 
+                  p.card__descr-item__value 2 people
+                .card__descr-item 
+                  h4.card__descr-item__title Footprint:
+                  .card__descr-item__blank 
+                  p.card__descr-item__value 2,2×2,5 m
+                .card__descr-item 
+                  h4.card__descr-item__title Bench length:
+                  .card__descr-item__blank 
+                  p.card__descr-item__value 2 m
+            .card__cost-btn-wrap
+              .card__cost 
+                span From: 
+                span.card__cost-value € 42 540
+              button.general-btn
+                .hover-wrap
+                  .svg-wrap 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M7.22703 6.77297H16.773V16.3189M16.1101 7.43588L6.43153 17.1144" stroke="#E0F09D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  span House viewing
+        .swiper-slide
+          a(href="/house1").card
+            .card__img-wrap 
+              img(src="./assets/images/card1.jpg", alt="glamping1")
+            .card__content
+              h3.card-title Sauna M
+              .card__descr-wrap 
+                .card__descr-item 
+                  h4.card__descr-item__title Capacity:
+                  .card__descr-item__blank 
+                  p.card__descr-item__value 2 people
+                .card__descr-item 
+                  h4.card__descr-item__title Footprint:
+                  .card__descr-item__blank 
+                  p.card__descr-item__value 2,2×2,5 m
+                .card__descr-item 
+                  h4.card__descr-item__title Bench length:
+                  .card__descr-item__blank 
+                  p.card__descr-item__value 2 m
+            .card__cost-btn-wrap
+              .card__cost 
+                span From: 
+                span.card__cost-value € 42 540
+              button.general-btn
+                .hover-wrap
+                  .svg-wrap 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M7.22703 6.77297H16.773V16.3189M16.1101 7.43588L6.43153 17.1144" stroke="#E0F09D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  span House viewing
+        .swiper-slide
+          a(href="/house1").card
+            .card__img-wrap 
+              img(src="./assets/images/card1.jpg", alt="glamping1")
+            .card__content
+              h3.card-title Sauna L
+              .card__descr-wrap 
+                .card__descr-item 
+                  h4.card__descr-item__title Capacity:
+                  .card__descr-item__blank 
+                  p.card__descr-item__value 2 people
+                .card__descr-item 
+                  h4.card__descr-item__title Footprint:
+                  .card__descr-item__blank 
+                  p.card__descr-item__value 2,2×2,5 m
+                .card__descr-item 
+                  h4.card__descr-item__title Bench length:
+                  .card__descr-item__blank 
+                  p.card__descr-item__value 2 m
+            .card__cost-btn-wrap
+              .card__cost 
+                span From: 
+                span.card__cost-value € 42 540
+              button.general-btn
+                .hover-wrap
+                  .svg-wrap 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M7.22703 6.77297H16.773V16.3189M16.1101 7.43588L6.43153 17.1144" stroke="#E0F09D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  span House viewing
+        //- .swiper-slide
+        //-   a(href="/house1").card
+        //-     .card__img-wrap 
+        //-       img(src="./assets/images/card1.jpg", alt="glamping1")
+        //-     .card__content
+        //-       h3.card-title Sauna L
+        //-       .card__descr-wrap 
+        //-         .card__descr-item 
+        //-           h4.card__descr-item__title Capacity:
+        //-           .card__descr-item__blank 
+        //-           p.card__descr-item__value 2 people
+        //-         .card__descr-item 
+        //-           h4.card__descr-item__title Footprint:
+        //-           .card__descr-item__blank 
+        //-           p.card__descr-item__value 2,2×2,5 m
+        //-         .card__descr-item 
+        //-           h4.card__descr-item__title Bench length:
+        //-           .card__descr-item__blank 
+        //-           p.card__descr-item__value 2 m
+        //-     .card__cost-btn-wrap
+        //-       .card__cost 
+        //-         span From: 
+        //-         span.card__cost-value € 42 540
+        //-       button.general-btn
+        //-         .hover-wrap
+        //-           .svg-wrap 
+        //-             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        //-               <path d="M7.22703 6.77297H16.773V16.3189M16.1101 7.43588L6.43153 17.1144" stroke="#E0F09D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        //-             </svg>
+        //-           span House viewing
+  section.filler
+    .video-frame 
+      <video muted playsinline autoplay loop>
+          <source src="./assets/images/hero.mp4">
+      </video>
+    .container
+      h2.section-title Crafted For Deep 
+        br
+        span Relaxation
+      
+      p.section-descr.mobile-mode Step inside — warm cedar, amber light, and calming silence embrace you.
+    .hero-bottom-block 
+      p.section-descr.tablet-mode Step inside — warm cedar, amber light, and calming silence embrace you.
+      a(href="/houses").general-btn
+        .hover-wrap
+          .svg-wrap 
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M7.22703 6.77297H16.773V16.3189M16.1101 7.43588L6.43153 17.1144" stroke="#E0F09D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          span House viewing          
+  section.section.operating.process.container
+    .title-wrap
+      h2.section-title Delivery &
+        br
+        | Installation
+      p.section-descr From production to placement — we manage the full journey of your modular unit. Every step is optimized for speed, quality, and seamless delivery.
+    .swiper-process 
+      .swiper-wrapper 
+        .swiper-slide 
+          .process__img-wrap 
+            img(src="./assets/images/process1.jpg", alt="process step 1")
+          .process__text-wrap
+            h3.process__item-title Manufacturing
+            p.process__item-descr High-precision production in our EU-based facility using durable and eco-friendly materials.
+        .swiper-slide 
+          .process__img-wrap 
+            img(src="./assets/images/process2.jpg", alt="process step 2")
+          .process__text-wrap
+            h3.process__item-title Logistics
+            p.process__item-descr Efficient cross-border transport — units are safely delivered across Europe with minimal delays.
+        .swiper-slide 
+          .process__img-wrap 
+            img(src="./assets/images/process3.jpg", alt="process step 3")
+          .process__text-wrap
+            h3.process__item-title Assembly
+            p.process__item-descr Pre-fabricated sections are assembled quickly on-site with no need for heavy construction.
+        .swiper-slide 
+          .process__img-wrap 
+            img(src="./assets/images/process4.jpg", alt="process step 4")
+          .process__text-wrap
+            h3.process__item-title Set Up
+            p.process__item-descr Turnkey installation with utilities and finishing — your unit is ready to use within days.
+        
+block footer
+  include ../includes/footer.pug
+
+block header
+  include ../includes/header.pug

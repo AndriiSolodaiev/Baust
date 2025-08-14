@@ -1,0 +1,238 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'single-sauna'
+    var id_page = 'id-page-single-sauna'
+    var class_page = 'class-page-single-sauna'
+    var headerCustomClass = 'type1' 
+    var breadcrumbsSubitem = [
+      {
+        label: 'About',
+        link: pagesLink[0].about
+      }
+    ]
+  
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  script(defer src='./assets/scripts/header.bundle.js')
+  script(defer src='./assets/scripts/footer.bundle.js')
+  script(defer src='./assets/scripts/singleSauna.bundle.js')
+block content
+  section.filler.sg
+    .video-frame 
+      img(src="./assets/images/sauna.jpg ", alt="")
+    .container
+      h1.section-title Mobile
+
+        br
+        span Sauna
+      
+      p.section-descr.mobile-mode Modular glamping unit, ready for any climate, priced at 
+        span.accent-color €70,000.
+    .hero-bottom-block 
+      p.section-descr.tablet-mode Modular glamping unit, ready for any climate, priced at 
+        span.accent-color €70,000.
+      a(href="/houses").general-btn
+        .hover-wrap
+          .svg-wrap 
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M7.22703 6.77297H16.773V16.3189M16.1101 7.43588L6.43153 17.1144" stroke="#E0F09D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          span Get ROI Calculator
+  section.details.container 
+    .details-container
+      .planning-explication-block
+        .planning-img-wrap
+          img(src="./assets/images/glamping-plan.png", alt="glamping plan")
+        .explication-wrap   
+          .explication-title Sauna S 
+          .card__descr-wrap 
+            .card__descr-item 
+              h4.card__descr-item__title Capacity:
+              .card__descr-item__blank 
+              p.card__descr-item__value 2 people
+            .card__descr-item 
+              h4.card__descr-item__title Footprint:
+              .card__descr-item__blank 
+              p.card__descr-item__value 2,2×2,5 m
+            .card__descr-item 
+              h4.card__descr-item__title Bench length:
+              .card__descr-item__blank 
+              p.card__descr-item__value 2 m
+            //- .card__descr-item 
+            //-   h4.card__descr-item__title Total area:
+            //-   .card__descr-item__blank 
+            //-   p.card__descr-item__value 23.8 m²
+            //- .card__descr-item 
+            //-   h4.card__descr-item__title Structure:
+            //-   .card__descr-item__blank 
+            //-   p.card__descr-item__value Two modules
+            //- .card__descr-item 
+            //-   h4.card__descr-item__title Construction:
+            //-   .card__descr-item__blank 
+            //-   p.card__descr-item__value Solid timber frame
+            //- .card__descr-item 
+            //-   h4.card__descr-item__title Weight
+            //-   .card__descr-item__blank 
+            //-   p.card__descr-item__value ~7.5 tons
+          button.general-btn(data-call-us-btn)
+            .hover-wrap
+              .svg-wrap 
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M7.22703 6.77297H16.773V16.3189M16.1101 7.43588L6.43153 17.1144" stroke="#E0F09D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              span Book a call
+      .room-tour-wrap(data-iframe-open data-iframe-src="https://apartment-tours.smartorange.com.ua/mulberry/?scene=0")
+        img(src="./assets/images/image.jpg", alt="iframe")
+        .room-tour-overlay 
+          .top-text-wrap 
+            p Room tour
+            <svg xmlns="http://www.w3.org/2000/svg" width="331" height="42" viewBox="0 0 331 42" fill="none">
+              <path d="M38.0251 1L46 7.2549C18.1062 10.8386 1 15.6763 1 20.9997C1 32.0456 74.6492 41 165.5 41C256.351 41 330 32.0456 330 20.9997C330 15.6129 312.484 10.7236 284 7.12754L291.812 1" stroke="#F2EFE9" stroke-width="2"/>
+            </svg>
+          button(data-popup-tour-btn).project-card__bottom 
+            p View interior 360°
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+              <path d="M8.22703 8.77297H17.773V18.3189M17.1101 9.43588L7.43153 19.1144" stroke="#F2EFE9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+  section.gallery 
+    .swiper-gallery 
+      .swiper-btn-wrap.container 
+        .swiper-button-prev(data-gallery-prev-btn)
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M11.8353 18.8047L5.08525 12.0547L11.8353 5.30469M6.02275 12.0547L19.7103 12.0547" stroke="#333333" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        .swiper-button-next(data-gallery-next-btn)
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12.1648 5.19531L18.9148 11.9453L12.1648 18.6953M17.9773 11.9453L4.28979 11.9453" stroke="#333333" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+      .slider-numbers
+        span.current-slides-number 01
+        span /
+        span.total-slides-number 02
+      .swiper-wrapper 
+        .swiper-slide 
+          img(src="./assets/images/sauna-gallery.jpg", alt="glamping")
+        .swiper-slide 
+          img(src="./assets/images/sauna-gallery.jpg", alt="glamping")
+        .swiper-slide 
+          img(src="./assets/images/sauna-gallery.jpg", alt="glamping")
+  section.features.container
+    .big-b b
+    .decor-svg 
+      <svg xmlns="http://www.w3.org/2000/svg" width="768" height="871" viewBox="0 0 768 871" fill="none">
+      <g filter="url(#filter0_f_919_7155)">
+      <path d="M807 693H-38V663.568L807 8V693Z" fill="url(#paint0_linear_919_7155)"/>
+      </g>
+      <defs>
+      <filter id="filter0_f_919_7155" x="-215.6" y="-169.6" width="1200.2" height="1040.2" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="88.8" result="effect1_foregroundBlur_919_7155"/>
+      </filter>
+      <linearGradient id="paint0_linear_919_7155" x1="-48.3973" y1="710.605" x2="883.19" y2="229.066" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E0F09D"/>
+      <stop offset="1" stop-color="#E0F09D" stop-opacity="0"/>
+      </linearGradient>
+      </defs>
+      </svg>
+    h2.features-title Features
+      span Key
+    .swiper-process 
+      .swiper-wrapper 
+        .swiper-slide 
+          .process__img-wrap 
+            img(src="./assets/images/feature1.jpg", alt="process step 1")
+          .process__text-wrap
+            h3.process__item-title Sleeps 2
+            p.process__item-descr A thoughtfully designed and cozy retreat, offering all the essentials for a peaceful and comfortable stay for two guests.
+        .swiper-slide 
+          .process__img-wrap 
+            img(src="./assets/images/feature2.jpg", alt="process step 2")
+          .process__text-wrap
+            h3.process__item-title 24 m² interior
+            p.process__item-descr Smart use of 24 m² provides a spacious feel with modern design, combining style, function, and comfort in every corner.
+        .swiper-slide.empty
+        .swiper-slide 
+          .process__img-wrap 
+            img(src="./assets/images/feature3.jpg", alt="process step 3")
+          .process__text-wrap
+            h3.process__item-title ‑35 °C → +40 °C certified
+            p.process__item-descr Built to perform in any climate — from freezing winters to scorching summers — ensuring year-round comfort and protection.
+        .swiper-slide.empty
+        .swiper-slide 
+          .process__img-wrap 
+            img(src="./assets/images/feature4.jpg", alt="process step 4")
+          .process__text-wrap
+            h3.process__item-title Plug‑&‑Play utilities
+            p.process__item-descr No hassle setup — all utilities are pre-installed and ready to use, so you can settle in and start living right away.
+        .swiper-slide 
+          .process__img-wrap 
+            img(src="./assets/images/feature5.jpg", alt="process step 4")
+          .process__text-wrap
+            h3.process__item-title Full bath & kitchen
+            p.process__item-descr Enjoy home-like convenience with a full bathroom and kitchen, giving you complete independence during your stay.
+  section.filler.relax
+    .video-frame 
+      <video muted playsinline autoplay loop>
+          <source src="./assets/images/hero.mp4">
+      </video>
+    .container
+      h2.section-title Crafted For Deep 
+        br
+        span Relaxation
+      
+      p.section-descr.mobile-mode Step inside — warm cedar, amber light, and calming silence embrace you.
+    .hero-bottom-block 
+      p.section-descr.tablet-mode Step inside — warm cedar, amber light, and calming silence embrace you.
+      a(href="/houses").general-btn
+        .hover-wrap
+          .svg-wrap 
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M7.22703 6.77297H16.773V16.3189M16.1101 7.43588L6.43153 17.1144" stroke="#E0F09D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          span House viewing
+  section.section.operating.process.container
+    .title-wrap
+      h2.section-title Process
+        br
+        | Overview
+      p.section-descr From production to placement — we manage the full journey of your modular unit. Every step is optimized for speed, quality, and seamless delivery.
+    .swiper-cases 
+      .swiper-wrapper 
+        .swiper-slide 
+          .process__img-wrap 
+            img(src="./assets/images/process1.jpg", alt="process step 1")
+          .process__text-wrap
+            h3.process__item-title Manufacturing
+            p.process__item-descr High-precision production in our EU-based facility using durable and eco-friendly materials.
+        .swiper-slide 
+          .process__img-wrap 
+            img(src="./assets/images/process2.jpg", alt="process step 2")
+          .process__text-wrap
+            h3.process__item-title Logistics
+            p.process__item-descr Efficient cross-border transport — units are safely delivered across Europe with minimal delays.
+        .swiper-slide 
+          .process__img-wrap 
+            img(src="./assets/images/process3.jpg", alt="process step 3")
+          .process__text-wrap
+            h3.process__item-title Assembly
+            p.process__item-descr Pre-fabricated sections are assembled quickly on-site with no need for heavy construction.
+        .swiper-slide 
+          .process__img-wrap 
+            img(src="./assets/images/process4.jpg", alt="process step 4")
+          .process__text-wrap
+            h3.process__item-title Set Up
+            p.process__item-descr Turnkey installation with utilities and finishing — your unit is ready to use within days.   
+   
+block footer
+  include ../includes/footer.pug
+
+block header
+  include ../includes/header.pug

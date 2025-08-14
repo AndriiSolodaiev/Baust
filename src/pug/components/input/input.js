@@ -1,3 +1,5 @@
+
+
 import Cleave from 'cleave.js';
 import intlTelInput from 'intl-tel-input';
 
@@ -115,13 +117,13 @@ export default class SexyInput {
       /* eslint-disable */
       input.setAttribute('inputmode', 'tel');
       input.intTelIput = intlTelInput(input, {
-        preferredCountries: ['ua', 'pl'],
+        preferredCountries: ['us', 'de'],
         autoPlaceholder: 'off',
       });
       let cleave = new Cleave(input, {
         /* eslint-enable */
         numericOnly: true,
-        prefix: '+380',
+        prefix: '+1',
         blocks: [4, 2, 3, 2, 2],
         delimiters: [' ', ' ', ' ', ''],
       });

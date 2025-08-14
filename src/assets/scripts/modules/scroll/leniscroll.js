@@ -26,6 +26,21 @@ export const initSmoothScrolling = () => {
     lenis.start();
   });
 
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault()
+
+    const targetId = this.getAttribute('href')
+    const target = document.querySelector(targetId)
+
+    if (target) {
+      lenis.scrollTo(target, {
+        offset: 0,
+        duration: 1.2, // в секундах
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) // easeOutExpo
+      })
+    }
+  })})
   // Define a function to run at each animation frame
   const scrollFn = time => {
     lenis.raf(time); // Run Lenis' requestAnimationFrame method

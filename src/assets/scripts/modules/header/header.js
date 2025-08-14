@@ -1,3 +1,8 @@
+
+import gsap from 'gsap';
+import { initSmoothScrolling } from '../scroll/leniscroll';
+import device from "current-device"
+initSmoothScrolling();
 const header = document.querySelector('.header-bg');
 
 window.addEventListener('scroll', function headerSquosh() {
@@ -25,9 +30,22 @@ document.body.addEventListener('click', function(evt) {
   const btnMenu =document.querySelector('[data-menu]')
   const menu =document.querySelector('[data-menu]')
  if (btnMenuTarget) {
-      menu.classList.toggle('hidden');
-      header.classList.toggle('menu-is-open');
-      return
+    const isHidden = menu.classList.contains('hidden');
+    
+    if (isHidden) {
+      menu.classList.remove('hidden');
+      header.classList.add('menu-is-open');
+      window.dispatchEvent(new Event('stop-scroll'));
+      animateMenuIn(menu);
+    } else {
+      animateMenuOut(menu, () => {
+        window.dispatchEvent(new Event('start-scroll'));
+        menu.classList.add('hidden');
+        header.classList.remove('menu-is-open');
+      });
+    }
+
+    return;
   }
   if(btnUp){
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -48,3 +66,66 @@ document.body.addEventListener('click', function(evt) {
 });
 
 
+function animateMenuIn(menu) {
+  const items = menu.querySelectorAll('.menu-item');
+  const socials = menu.querySelectorAll('.socials-list__item ');
+  
+
+  const container = menu.querySelector('.menu-container');
+
+  // Початкові стани
+  gsap.set([items, socials], { opacity: 0, y: 30 });
+  gsap.set(menu, { opacity: 0 });
+  gsap.set(container, { scale: 0.95, opacity: 0 });
+
+  const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+  tl.to(menu, { opacity: 1, duration: 0.2 })
+    .to(container, { scale: 1, opacity: 1, duration: 0.3 }, "<")
+    .to(items, { opacity: 1, y: 0, stagger: 0.05, duration: 0.35 }, "-=0.2")
+    .to(socials, { opacity: 1, y: 0, stagger: 0.1, duration: 0.3 }, "-=0.3")
+    
+}
+
+function animateMenuOut(menu, onComplete) {
+  const items = menu.querySelectorAll('.menu-item');
+  const socials = menu.querySelectorAll('.social-item');
+  
+  const container = menu.querySelector('.menu-container');
+
+  const tl = gsap.timeline({
+    defaults: { ease: "power3.in" },
+    onComplete
+  });
+
+  tl.to([...socials, ...items], { opacity: 0, y: 30, stagger: 0.04, duration: 0.2 })
+    .to(container, { scale: 0.95, opacity: 0, duration: 0.2 }, "-=0.2")
+    .to(menu, { opacity: 0, duration: 0.2 }, "-=0.1");
+}
+
+
+const inputs = document.querySelectorAll('.form-field-input')
+  
+  if(inputs.length) {
+  inputs.forEach(field => {
+   
+  const input = field.querySelector('.form-field__input');
+ if (!input) {
+      console.warn('Поле не містить <input>', field);
+      return;
+    }
+  input.addEventListener('focus', () => {
+    field.classList.add('is-focused');
+  });
+
+  input.addEventListener('blur', () => {
+    // прибирати фокус тільки якщо поле порожнє
+    if (!input.value) {
+      field.classList.remove('is-focused');
+    }
+  });
+});}
+document.addEventListener("DOMContentLoaded", () => {
+document.querySelectorAll('.iti__country-list').forEach(el => {
+  el.setAttribute('data-lenis-prevent', '')
+})})
