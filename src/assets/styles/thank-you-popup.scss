@@ -21,24 +21,23 @@
 
   &__text {
     width: 90%;
-    padding: 28px 20px;
+    padding: 32px 20px;
     background-color: $bg-color;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     position: absolute;
     top:50%;
     left:50%;
     transform:translate(-50%, -50%) ;
     @include tablet {
-      padding: 28px 40px;
+      padding: 60px 120px;
       width: fit-content;
     }
    
-    @include desktop {
-      padding: 40px 40px;
-    }
+    
 
     svg {
       align-self: center;
@@ -47,12 +46,10 @@
       margin-bottom: 20px;
     }
 
-    @include tablet {
-      padding: 20px 40px;
-    }
+   
 
     @include laptop {
-      padding: 40px 40px;
+     
 
       svg {
         width: 70px;
@@ -62,15 +59,16 @@
   }
 
   & .thank-you-popup__title {
-    @include general-text;
-    
-    
+    @include article-title;
+    margin-bottom: 20px;
+    text-align: center;
   }
 
   & .thank-you-popup__descr {
     @include general-text;
-   
+    text-align: center;
     width: 100%;
+    opacity: 0.5;
   }
   & .thank-you-popup__btn {
     position: absolute;
@@ -79,6 +77,8 @@
     svg{
       width:16px;
       height:16px;
+      path{stroke: $text-color;}
+      
     }
   }
 }
