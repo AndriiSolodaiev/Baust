@@ -232,6 +232,13 @@
     object-fit: cover;
     position: relative;
     z-index: 1;
+    @include from-to(601px, 1024px){
+      width: 100%;
+      height: calc(100% - 104px);
+      z-index: cover;
+      position: relative;
+      z-index: 1;
+    }
   }
   // .room-tour-overlay {
   //   position: absolute;
@@ -284,6 +291,9 @@
     align-items: center;
     padding-bottom:20px;
     transform: translateZ(0px);
+    @include from-to(601px, 1024px){
+      padding-bottom: 20px;
+    }
     // height:80px;
   }
   .header-btn{
