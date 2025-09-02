@@ -34,11 +34,12 @@ export const initSmoothScrolling = () => {
     const target = document.querySelector(targetId)
 
     if (target) {
+      setTimeout(() => {
       lenis.scrollTo(target, {
-        offset: 0,
-        duration: 1.2, // в секундах
+        offset: -100,
+        duration: 1, // в секундах
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) // easeOutExpo
-      })
+      })}, 10)
     }
   })})
   // Define a function to run at each animation frame

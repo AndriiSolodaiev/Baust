@@ -3,20 +3,37 @@
   background-color: $bc;
   overflow: hidden;
   padding-top: 60px;
-
+  border-radius: 12px 12px 0 0;
   @include tablet {
     padding-top: 70px;
   }
 
   @include laptop {
     padding-top: 120px;
+    border-radius: 16px 16px 0 0;
   }
 
   .big-b {
-    background-image: linear-gradient(342deg, #F2EFE9 48.35%, rgba(140, 138, 135, 0.00) 69.92%);
+    background-image: linear-gradient(342deg, #F2EFE9 48.35%, rgba(140, 138, 135, 0.00) 79.92%);
     position: absolute;
     top: auto;
     bottom: -20%;
+    opacity: 0.05;
+     @include tablet {
+      bottom:-7%;
+      transform: translateX(-10%);
+     }
+    @include laptop {
+      background-image: linear-gradient(-15deg, #F2EFE9 48.35%, rgba(140, 138, 135, 0.00) 79.92%);
+      bottom: -40%;
+      transform: translateX(-20%);
+    }
+  }
+  .footer-title {
+    margin-bottom: 40px;
+    @include laptop {
+      margin-bottom: 60px;
+    }
   }
 }
 
@@ -127,7 +144,13 @@
 
     &-link {
       @include subtitle-text;
-
+      @include laptop {
+  transition: all 0.5s ease;
+  padding-right:40px ;
+  &:hover {
+  text-shadow: 0 0 10px #8a8a8a, 0 0 20px #8a8a8a, 0 0 30px #8a8a8a;
+}
+}
     }
 
     &-link--second {
@@ -177,6 +200,12 @@
     }
     margin-bottom: 60px;
     font-size: 2.18vw;
-    text-transform: none;
+    
+  }
+}
+.footer
+.socials-list__item {
+  &::before, &::after {
+    background-color: rgba(242, 239, 233, 0.05);
   }
 }

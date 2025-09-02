@@ -29,17 +29,19 @@ document.body.addEventListener('click', function(evt) {
   const btnMenuTarget = evt.target.closest('[data-menu-button]');
   const btnMenu =document.querySelector('[data-menu]')
   const menu =document.querySelector('[data-menu]')
- if (btnMenuTarget) {
+  const menuItem = evt.target.closest(".menu-item");
+ if (btnMenuTarget || menuItem) {
     const isHidden = menu.classList.contains('hidden');
     
     if (isHidden) {
+      window.dispatchEvent(new Event('stop-scroll'));
       menu.classList.remove('hidden');
       header.classList.add('menu-is-open');
-      window.dispatchEvent(new Event('stop-scroll'));
+      
       animateMenuIn(menu);
     } else {
+      window.dispatchEvent(new Event('start-scroll'));
       animateMenuOut(menu, () => {
-        window.dispatchEvent(new Event('start-scroll'));
         menu.classList.add('hidden');
         header.classList.remove('menu-is-open');
       });
@@ -129,3 +131,8 @@ document.addEventListener("DOMContentLoaded", () => {
 document.querySelectorAll('.iti__country-list').forEach(el => {
   el.setAttribute('data-lenis-prevent', '')
 })})
+
+gsap.to(".header", {
+  duration: 1.5,
+  ease: "power3.out",
+ translateY:0})

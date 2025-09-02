@@ -29,7 +29,14 @@ tl.from(".svg-map-wrap", {
   y: 40,
   duration: 0.6,
   ease: "power2.out",
-})
+}).fromTo(".operating.first .section-title", {
+  y: 80,
+  ease: "power3.out",
+ clipPath: "polygon(0% 0%, 100% 0%, 100% 0, 0% 0%)",
+}, {
+  duration: 1.5,
+  clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+ y:0}, "<")
 
 // 2. Поява точок на мапі (по черзі)
 .addLabel("dotsStart")
@@ -48,7 +55,7 @@ tl.from(".svg-map-wrap", {
       each: dotStaggerDelay,
     }
   },
-  "dotsStart+=0.1" // легка затримка після появи svg
+  "<" // легка затримка після появи svg
 )
 
 // 3. Поява .operating__item (по черзі)
@@ -58,14 +65,11 @@ tl.from(".svg-map-wrap", {
   duration: 0.5,
   ease: "power2.out",
   stagger: 0.15,
-}, "dotsStart+=0.1");
+}, "<+=0.01");
 
 
 
 
-const beforeRule = CSSRulePlugin.getRule(".filler::before");
-const afterRule = CSSRulePlugin.getRule(".filler::after");
-console.log(beforeRule)
 const tlFiller = gsap.timeline({
   scrollTrigger: {
     trigger: ".filler",
@@ -76,24 +80,16 @@ const tlFiller = gsap.timeline({
 });
 
 // Плавне розсунення псевдоелементів
-tlFiller.to(beforeRule, {
-  height: "0%",
+tlFiller
+.fromTo(".filler .video-frame video",{
+  scale: 1.4,
   ease: "power2.out",
-  duration:2
-}, 0)
-.to(afterRule, {
-  height: "0%",
-  ease: "power2.out"
-  ,duration:2
-}, "<")
-.fromTo(".filler .video-frame",{
-  scale: 1.2,
-  ease: "power2.out",
-  duration:2,
+  
 }, {
+  duration:2,
   scale: 1,
   ease: "power2.out"
-}, "<")
+})
 .fromTo(".filler .section-descr",{
   opacity: 0,
   yPercent:30,
@@ -104,7 +100,16 @@ tlFiller.to(beforeRule, {
   yPercent:0,
   scale: 1,
   ease: "power2.out"
-}, "<=0.2");
+}, "<")
+.fromTo(".filler .section-title",{
+  ease: "power2.out",
+  
+  clipPath: "polygon(0% 0%, 100% 0%, 100% 0, 0% 0%)",
+}, {
+  clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+  ease: "power2.out",
+  duration:1,
+}, "<");
 
 const swiperProcess = new Swiper('.swiper-process', {
     speed: 600,
@@ -134,20 +139,29 @@ slides.forEach((slide, index) => {
 
   const scaleFrom = index % 2 === 1 ? 1.8 : 1.2;
 
-  const tl = gsap.timeline({
+  const tlProcess = gsap.timeline({
     scrollTrigger: {
       trigger: ".swiper-process",
       start: "top 80%", // коли верх слайду входить в нижню частину в'юпорту
+      end: "bottom center",
     }
   });
 
   // Картка
-  tl.from(slide, {
+  tlProcess
+  .fromTo(".process .section-title", {
+  y: 80,
+  ease: "power3.out",
+ clipPath: "polygon(0% 0%, 100% 0%, 100% 0, 0% 0%)",
+}, {
+  duration: 1.5,
+  clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+ y:0}).from(slide, {
     y: 100,
     opacity: 0,
     duration: 0.6,
     ease: "power2.out"
-  }).fromTo(img, 
+  }, "<").fromTo(img, 
     {
       scale: scaleFrom,
     },
@@ -155,5 +169,125 @@ slides.forEach((slide, index) => {
       scale: 1,
       duration: 1.2,
       ease: "power3.out"
-    }, 0);
+    }, "<");
 });
+
+gsap.fromTo(".hero .section-title, .hero .hero-slogan, .hero .section-descr, .hero .hero-bottom-block", {
+  y: 80,
+  stagger: 0.2,
+  duration: 1.2,
+  ease: "power3.out",
+ clipPath: "polygon(0% 0%, 100% 0%, 100% 0, 0% 0%)",
+}, {
+  clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+ y:0})
+ 
+// 2. Hero піниться (але друга секція налізає)
+ScrollTrigger.create({
+  trigger: ".hero",
+  start: "top top",
+  end: "+=100%", 
+  pin: true,
+  pinSpacing: false // <-- без відступу!
+});
+
+// 3. Анімації другої секції
+gsap.timeline({
+  scrollTrigger: {
+    trigger: ".advantages",
+    start: "top 80%",
+    end: "center 20%",
+    // scrub: true
+  }
+})
+.from(".advantages-title", {
+  xPercent: -50,
+  
+  duration: 2,
+  ease: "power3.out"
+})
+.from(".advantages__list", {
+  yPercent: 50,
+  opacity: 0,
+  duration: 2,
+  ease: "power3.out"
+}, "<")
+.fromTo(".advantages__img-wrap img",
+  { scale: 1.3, opacity: 0 },
+  { scale: 1, opacity: 1, duration: 2, ease: "power3.out" },
+  "<+=0.1"
+);
+
+ScrollTrigger.create({
+  trigger: ".filler",
+  start: "top top",
+  end: "+=100%",
+  pin: true,
+  pinSpacing: false
+});
+
+// === story ===
+// Анімації для story
+gsap.timeline({
+  scrollTrigger: {
+    trigger: ".story",
+    start: "top 80%",
+    end: "center 20%",
+    // scrub: true
+  }
+})
+.from(".story-title", {
+    xPercent: -50,
+  duration: 2,
+  ease: "power3.out"
+})
+.from(".story .section-descr-wrap", {
+  yPercent: 50,
+  opacity: 0,
+  duration: 2,
+  ease: "power3.out"
+}, "<")
+.fromTo(".story .advantages__img-wrap img",
+  { scale: 1.3, opacity: 0 },
+  { scale: 1, opacity: 1, duration: 2, ease: "power3.out" },
+  "<+=0.1"
+);
+
+gsap.timeline({
+  scrollTrigger: {
+    trigger: ".project-section",
+    start: "top 60%",
+    end: "center 20%",
+    // scrub: true
+  }
+})
+.fromTo(".project-section .section-title", {
+  y: 80,
+ 
+  
+  ease: "power3.out",
+ clipPath: "polygon(0% 0%, 100% 0%, 100% 0, 0% 0%)",
+}, {
+  duration: 1.5,
+  clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+ y:0})
+ .fromTo(".project-card",
+  {
+  
+  ease: "power3.out",
+ clipPath: "polygon(0% 50%, 100% 50%, 100% 50%, 0% 50%)"
+}, {
+  duration: 1.5,
+  clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+ }, "<"
+  ).fromTo(".project-card img",
+  {
+  
+  ease: "power3.out",
+ scale: 1.5,
+}, {
+  stagger:0.2,
+  duration: 1.5,
+  scale: 1,
+ }, "<"
+  )

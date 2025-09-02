@@ -129,6 +129,33 @@ window.addEventListener('resize', () => {
   ScrollTrigger.refresh();
 });
 
+
+gsap.timeline({
+  scrollTrigger: {
+    trigger: ".discover",
+    start: "top 80%",
+    end: "center 20%",
+    // scrub: true
+  }
+})
+.from(".discover-title", {
+  xPercent: -50,
+  
+  duration: 1.5,
+  ease: "power3.out"
+})
+.fromTo(".swiper-discover .card ",
+  { y:80, opacity: 0 },
+  { y: 0, opacity: 1, duration: 1.5, ease: "power3.out", stagger: "0.2" },
+  "<"
+)
+.fromTo(".swiper-discover .card img",
+  { scale: 1.3, opacity: 0 },
+  { scale: 1, opacity: 1, duration: 1.5, ease: "power3.out", stagger: "0.2" },
+  "<+=0.1"
+);
+
+
 const swiperDiscover = new Swiper('.swiper-discover', {
   modules: [Navigation],
   speed: 700,
@@ -154,9 +181,14 @@ const swiperDiscover = new Swiper('.swiper-discover', {
     }
 });
 
-const beforeRule = CSSRulePlugin.getRule(".filler::before");
-const afterRule = CSSRulePlugin.getRule(".filler::after");
 
+ScrollTrigger.create({
+  trigger: ".filler",
+  start: "top top",
+  end: "+=100%",
+  pin: true,
+  pinSpacing: false
+});
 const tlFiller = gsap.timeline({
   scrollTrigger: {
     trigger: ".filler",
@@ -167,35 +199,36 @@ const tlFiller = gsap.timeline({
 });
 
 // Плавне розсунення псевдоелементів
-tlFiller.to(beforeRule, {
-  height: "0%",
+tlFiller
+.fromTo(".filler .video-frame video",{
+  scale: 1.4,
   ease: "power2.out",
-  duration:2
-}, 0)
-.to(afterRule, {
-  height: "0%",
-  ease: "power2.out"
-  ,duration:2
-}, "<")
-.fromTo(".filler .video-frame",{
-  scale: 1.2,
-  ease: "power2.out",
-  duration:2,
+  
 }, {
+  duration:2,
   scale: 1,
   ease: "power2.out"
-}, "<")
-.fromTo(".filler .section-descr",{
+})
+.fromTo(".filler .hero-bottom-block",{
   opacity: 0,
   yPercent:30,
   ease: "power2.out",
-  duration:1,
+  
 }, {
   opacity: 1,
   yPercent:0,
-  scale: 1,
+  duration:1.2,
   ease: "power2.out"
-}, "<=0.2");
+}, "<")
+.fromTo(".filler .section-title",{
+  ease: "power2.out",
+  
+  clipPath: "polygon(0% 0%, 100% 0%, 100% 0, 0% 0%)",
+}, {
+  clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+  ease: "power2.out",
+  duration:1,
+}, "<");
 
 const swiperProcess = new Swiper('.swiper-process', {
     speed: 600,
@@ -225,7 +258,7 @@ slides.forEach((slide, index) => {
 
   const scaleFrom = index % 2 === 1 ? 1.8 : 1.2;
 
-  const tl = gsap.timeline({
+  const tlProcess = gsap.timeline({
     scrollTrigger: {
       trigger: ".swiper-process",
       start: "top 80%", // коли верх слайду входить в нижню частину в'юпорту
@@ -233,12 +266,20 @@ slides.forEach((slide, index) => {
   });
 
   // Картка
-  tl.from(slide, {
+  tlProcess
+  .fromTo(".process .section-title", {
+  y: 80,
+  ease: "power3.out",
+ clipPath: "polygon(0% 0%, 100% 0%, 100% 0, 0% 0%)",
+}, {
+  duration: 1.5,
+  clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+ y:0}).from(slide, {
     y: 100,
     opacity: 0,
     duration: 0.6,
     ease: "power2.out"
-  }).fromTo(img, 
+  }, "<").fromTo(img, 
     {
       scale: scaleFrom,
     },
@@ -248,3 +289,15 @@ slides.forEach((slide, index) => {
       ease: "power3.out"
     }, 0);
 });
+
+gsap.fromTo(".hero .section-title, .hero .hero-slogan, .hero .section-descr, .hero .hero-bottom-block, .hero .glampings-descr-wrap", {
+  y: 80,
+  stagger: 0.2,
+  
+  ease: "power3.out",
+ clipPath: "polygon(0% 0%, 100% 0%, 100% 0, 0% 0%)",
+}, {
+  duration: 1.2,
+  clipPath: "polygon(0% 0%, 100% 0%, 100% 120%, 0% 120%)",
+ y:0, 
+ })

@@ -1,10 +1,57 @@
 
 import Swiper, { Autoplay, EffectFade, Navigation, Grid } from 'swiper';
 import { gsap, ScrollTrigger, CustomEase, CSSRulePlugin } from 'gsap/all';
-
+import 'ion-rangeslider';
+// import 'ion-rangeslider/css/ion.rangeSlider.min.css';
+import $ from 'jquery';
 
 
 gsap.registerPlugin(ScrollTrigger, CustomEase, CSSRulePlugin);
+
+
+ScrollTrigger.create({
+  trigger: ".filler",
+  start: "top top",
+  end: "+=100%",
+  pin: true,
+  pinSpacing: false
+});
+
+gsap.fromTo(".filler.sg .section-title, .filler.sg .hero-slogan, .filler.sg .section-descr, .filler.sg .general-btn", {
+  y: 80,
+  stagger: 0.2,
+  duration: 1.2,
+  ease: "power3.out",
+ clipPath: "polygon(0% 0%, 100% 0%, 100% 0, 0% 0%)",
+}, {
+  clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+ y:0})
+gsap.fromTo(
+ ".filler.sg img", {
+  scale: 1.4,
+  
+ }, 
+ {
+  scale: 1,
+duration: 1.2,
+  ease: "power3.out",
+ }, 
+ )
+
+gsap.timeline({
+  scrollTrigger: {
+    trigger: ".features",
+    start: "top 80%",
+    end: "center 20%",
+    // scrub: true
+  }
+})
+.from(".features-title", {
+  xPercent: -50,
+  
+  duration: 2,
+  ease: "power3.out"
+})
 
 const swiperProcess = new Swiper('.swiper-process', {
   modules: [Grid],
@@ -51,7 +98,7 @@ slides.forEach((slide, index) => {
     opacity: 0,
     duration: 0.6,
     ease: "power2.out"
-  }).fromTo(img, 
+  },"<").fromTo(img, 
     {
       scale: scaleFrom,
     },
@@ -192,7 +239,14 @@ slidesCases.forEach((slide, index) => {
   });
 
   // Картка
-  tlCases.fromTo(slidesCases, {
+  tlCases.fromTo(".process .section-title", {
+  y: 80,
+  ease: "power3.out",
+ clipPath: "polygon(0% 0%, 100% 0%, 100% 0, 0% 0%)",
+}, {
+  duration: 1.5,
+  clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+ y:0}).fromTo(slidesCases, {
     y: 100,
     opacity: 0,
     duration: 0.6,
@@ -200,7 +254,7 @@ slidesCases.forEach((slide, index) => {
   }, {
     opacity: 1,
     y: 0,
-  }).fromTo(img, 
+  }, "<").fromTo(img, 
     {
       scale: scaleFrom,
     },
@@ -211,48 +265,48 @@ slidesCases.forEach((slide, index) => {
     }, 0);
 });
 
-const beforeRule = CSSRulePlugin.getRule(".filler::before");
-const afterRule = CSSRulePlugin.getRule(".filler::after");
+// const beforeRule = CSSRulePlugin.getRule(".filler::before");
+// const afterRule = CSSRulePlugin.getRule(".filler::after");
 
-const tlFiller = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".filler",
-    start: "30% center",
-    end: "bottom center",
+// const tlFiller = gsap.timeline({
+//   scrollTrigger: {
+//     trigger: ".filler",
+//     start: "30% center",
+//     end: "bottom center",
     
-  }
-});
+//   }
+// });
 
-// Плавне розсунення псевдоелементів
-tlFiller.to(beforeRule, {
-  height: "0%",
-  ease: "power2.out",
-  duration:2
-}, 0)
-.to(afterRule, {
-  height: "0%",
-  ease: "power2.out"
-  ,duration:2
-}, "<")
-.fromTo(".filler .video-frame",{
-  scale: 1.2,
-  ease: "power2.out",
-  duration:2,
-}, {
-  scale: 1,
-  ease: "power2.out"
-}, "<")
-.fromTo(".filler .section-descr",{
-  opacity: 0,
-  yPercent:30,
-  ease: "power2.out",
-  duration:1,
-}, {
-  opacity: 1,
-  yPercent:0,
-  scale: 1,
-  ease: "power2.out"
-}, "<=0.2");
+// // Плавне розсунення псевдоелементів
+// tlFiller.to(beforeRule, {
+//   height: "0%",
+//   ease: "power2.out",
+//   duration:2
+// }, 0)
+// .to(afterRule, {
+//   height: "0%",
+//   ease: "power2.out"
+//   ,duration:2
+// }, "<")
+// .fromTo(".filler .video-frame",{
+//   scale: 1.2,
+//   ease: "power2.out",
+//   duration:2,
+// }, {
+//   scale: 1,
+//   ease: "power2.out"
+// }, "<")
+// .fromTo(".filler .section-descr",{
+//   opacity: 0,
+//   yPercent:30,
+//   ease: "power2.out",
+//   duration:1,
+// }, {
+//   opacity: 1,
+//   yPercent:0,
+//   scale: 1,
+//   ease: "power2.out"
+// }, "<=0.2");
 
 
 const iframePopUp = document.querySelector('[data-iframe-modal]');
@@ -276,3 +330,130 @@ if (iframeClose) {
     iframeWindow.src = '';
   });
 }
+gsap.timeline({
+  scrollTrigger: {
+    trigger: ".calculator",
+    start: "top 80%",
+    end: "center 20%",
+    // scrub: true
+  }
+})
+.from(".calculator .section-title", {
+  xPercent: -50,
+  
+  duration: 2,
+  ease: "power3.out"
+}).from(".calculator__inner", {
+  yPercent:10,
+  opacity:0,
+  duration: 1.2,
+}, "<+=0.2" )
+
+
+$(document).ready(function () {
+  const HOUSE_COST = 70000;
+  const DAYS_IN_YEAR = 365;
+
+  // ініціалізація слайдерів
+  const nightlySlider = $("#nightly-rate").ionRangeSlider({
+    skin: "round",
+    min: 150,
+    max: 1200,
+    from: 180,
+    step: 1,
+    onFinish: calculate   // ✅ рахує тільки після відпускання повзунка
+  }).data("ionRangeSlider");
+
+  const occupancySlider = $("#occupancy-rate").ionRangeSlider({
+    skin: "round",
+    min: 40,
+    max: 95,
+    from: 60,
+    step: 1,
+    onFinish: calculate
+  }).data("ionRangeSlider");
+
+  const unitsSlider = $("#units").ionRangeSlider({
+    skin: "round",
+    min: 1,
+    max: 50,
+    from: 35,
+    step: 1,
+    onFinish: calculate
+  }).data("ionRangeSlider");
+
+  const operatingSlider = $("#operating-costs").ionRangeSlider({
+    skin: "round",
+    min: 30,
+    max: 70,
+    from: 60,
+    step: 1,
+    onFinish: calculate
+  }).data("ionRangeSlider");
+
+  // результати
+  const totalIncomeEl = document.querySelector(".calculator__result:nth-child(1) .value");
+  const netIncomeEl = document.querySelector(".calculator__result:nth-child(2) .value");
+  const roiEl = document.querySelector(".calculator__result:nth-child(3) .value");
+  const paybackEl = document.querySelector(".calculator__result:nth-child(4) .value");
+
+  function formatNumber(num) {
+    return num.toLocaleString("en-US", { maximumFractionDigits: 0 });
+  }
+  function animateValue(el, start, end, duration = 800) {
+    if(end===start) return
+  const range = end - start;
+  const minTimer = 50;
+  const steps = Math.ceil(duration / minTimer);
+  let stepCount = 0;
+
+  // на старті робимо напівпрозору
+  gsap.fromTo(el, {opacity:0.2, scale: 0.7}, {opacity: 1,scale: 1, duration: duration/1000})
+  // el.style.opacity = 0.4;
+  // el.style.transition = `opacity ${duration}ms ease`;
+
+  const timer = setInterval(() => {
+    stepCount++;
+    const progress = stepCount / steps;
+    const current = start + range * progress;
+    el.textContent = formatNumber(Math.round(current));
+
+    if (stepCount >= steps) {
+      clearInterval(timer);
+      el.textContent = formatNumber(end);
+      // el.style.opacity = 1; // фінал
+    }
+  }, minTimer);
+
+  // паралельно анімуємо прозорість (плавно до 1)
+  // requestAnimationFrame(() => {
+  //   el.style.opacity = 1;
+  // });
+}
+  function calculate() {
+  const nightlyRate = nightlySlider.result.from;
+  const occupancyRate = occupancySlider.result.from / 100;
+  const units = unitsSlider.result.from;
+  const operatingCostsRate = operatingSlider.result.from / 100;
+
+  const occupiedDays = DAYS_IN_YEAR * occupancyRate;
+  const totalIncome = Math.round(nightlyRate * occupiedDays * units);
+  const netIncome = Math.round(totalIncome * (1 - operatingCostsRate));
+  const investments = HOUSE_COST * units;
+  const roi = investments > 0 ? (netIncome / investments) * 100 : 0;
+  const payback = netIncome > 0 ? investments / netIncome : 0;
+
+  // анімація для основних чисел
+  animateValue(totalIncomeEl, +totalIncomeEl.textContent.replace(/,/g, "") || 0, totalIncome);
+  animateValue(netIncomeEl, +netIncomeEl.textContent.replace(/,/g, "") || 0, netIncome);
+  // animateValue(roiEl, +roiEl.textContent.replace(/,/g, "") || 0, roi);
+  // animateValue(paybackEl, +paybackEl.textContent.replace(/,/g, "") || 0, payback);
+  // акуратне оновлення без анімації для відсотків і років
+  roiEl.textContent = roi.toFixed(1);
+  paybackEl.textContent = payback.toFixed(1);
+}
+
+  // ⚡ перший запуск для початкових значень
+  calculate();
+});
+

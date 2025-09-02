@@ -6,6 +6,51 @@ import { gsap, ScrollTrigger, CustomEase, CSSRulePlugin } from 'gsap/all';
 
 gsap.registerPlugin(ScrollTrigger, CustomEase, CSSRulePlugin);
 
+ScrollTrigger.create({
+  trigger: ".filler",
+  start: "top top",
+  end: "+=100%",
+  pin: true,
+  pinSpacing: false
+});
+
+gsap.fromTo(".filler.sg .section-title, .filler.sg .hero-slogan, .filler.sg .section-descr, .filler.sg .general-btn", {
+  y: 80,
+  stagger: 0.2,
+  duration: 1.2,
+  ease: "power3.out",
+ clipPath: "polygon(0% 0%, 100% 0%, 100% 0, 0% 0%)",
+}, {
+  clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+ y:0})
+ gsap.fromTo(
+ ".filler.sg img", {
+  scale: 1.4,
+  
+ }, 
+ {
+  scale: 1,
+duration: 1.2,
+  ease: "power3.out",
+ }, 
+ )
+
+
+gsap.timeline({
+  scrollTrigger: {
+    trigger: ".features",
+    start: "top 80%",
+    end: "center 20%",
+    // scrub: true
+  }
+})
+.from(".features-title", {
+  xPercent: -50,
+  
+  duration: 2,
+  ease: "power3.out"
+})
+
 const swiperProcess = new Swiper('.swiper-process', {
   modules: [Grid],
     speed: 600,
@@ -160,15 +205,23 @@ slidesCases.forEach((slide, index) => {
   });
 
   // Картка
-  tlCases.fromTo(slidesCases, {
+  tlCases.fromTo(".process .section-title", {
+  y: 80,
+  ease: "power3.out",
+ clipPath: "polygon(0% 0%, 100% 0%, 100% 0, 0% 0%)",
+}, {
+  duration: 1.5,
+  clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+ y:0}).fromTo(slidesCases, {
     y: 100,
     opacity: 0,
-    duration: 0.6,
+    
     ease: "power2.out"
   }, {
     opacity: 1,
+    duration: 0.6,
     y: 0,
-  }).fromTo(img, 
+  }, "<").fromTo(img, 
     {
       scale: scaleFrom,
     },
@@ -179,38 +232,36 @@ slidesCases.forEach((slide, index) => {
     }, 0);
 });
 
-const beforeRule = CSSRulePlugin.getRule(".filler::before");
-const afterRule = CSSRulePlugin.getRule(".filler::after");
-console.log(afterRule)
+
+
 const tlFiller = gsap.timeline({
   scrollTrigger: {
-    trigger: ".filler.relax",
+    trigger: ".relax",
     start: "top center",
     end: "bottom center",
-    
+   
   }
 });
 
 // Плавне розсунення псевдоелементів
-tlFiller.to(beforeRule, {
-  height: "0%",
+tlFiller.fromTo(".relax .section-title", {
+  y: 80,
+  ease: "power3.out",
+ clipPath: "polygon(0% 0%, 100% 0%, 100% 0, 0% 0%)",
+}, {
+  duration: 1.5,
+  clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+ y:0})
+.fromTo(".relax .video-frame video",{
+  scale: 1.4,
   ease: "power2.out",
-  duration:1.5
-}, 0)
-.to(afterRule, {
-  height: "0%",
-  ease: "power2.out"
-  ,duration: 1.5
-}, "<")
-.fromTo(".filler.relax .video-frame",{
-  scale: 1.2,
-  ease: "power2.out",
-  duration:1.5,
+  
 }, {
   scale: 1,
+  duration:1.5,
   ease: "power2.out"
 }, "<")
-.fromTo(".filler.relax .section-descr",{
+.fromTo(".relax .section-descr",{
   opacity: 0,
   yPercent:30,
   ease: "power2.out",

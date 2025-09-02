@@ -21,7 +21,9 @@
     }
   }
 }
-
+.hero .section-title, .hero .hero-slogan, .hero .section-descr, .hero .hero-bottom-block {
+   clip-path: polygon(0% 0%, 100% 0%, 100% 0, 0% 0%)
+}
 .hero {
   height: 100svh;
   width: 100%;
@@ -82,7 +84,7 @@
 .section-title {
   @include section-title;
   margin-bottom: 20px;
-
+  // clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
   &>span {
     padding-right: 42px;
   }
@@ -132,13 +134,14 @@
   padding-left: 46px;
   
   @include tablet {
-    padding-left: 0px;
+    padding-left: 46px;
     max-width: 300px;
   }
 
   @include laptop {
     position: absolute;
     right: 40px;
+    padding-left: 0px;
     max-width: 19.6vw;
     top: 220px;
   }
@@ -229,7 +232,7 @@
     display: flex;
     width: 64px;
     height: 64px;
-
+    flex-shrink: 0;
     justify-content: center;
     align-items: center;
     border-radius: 8px;
@@ -285,8 +288,8 @@
   line-height: 80%;
   text-decoration: none;
 
-  font-size: 364.258px;
-  opacity: 0.05;
+  font-size: 464.258px;
+  opacity: 0.1;
   text-align: end;
   background: linear-gradient(120deg, #ffffff00 60%, $text-color );
   -webkit-background-clip: text;
@@ -296,17 +299,18 @@
   color: transparent;
 
   @include tablet {
-    font-size: 746px;
+    font-size: 90vw;
   }
 
   @include laptop {
-    font-size: 100vh;
+    font-size: 80vw;
   }
 }
 
 .advantages {
   position: relative;
-
+  background-color: $bg-color;
+  z-index: 3;
   &-title {
     @include super-title;
     color: $accent-color;
@@ -326,7 +330,7 @@
       padding-left: 28px;
 
       @include tablet {
-        padding-left: 7.5vh;
+        padding-left: 7.5vw;
       }
 
       @include laptop {
@@ -362,7 +366,9 @@
   width: 100%;
   padding-bottom: 20px;
   border-bottom: 1px solid rgba(242, 239, 233, 0.10);
-
+  &:last-child {
+    border-bottom:none;
+  }
   @include tablet {
     gap: 20px;
     width: calc(50% - 20px);
@@ -441,13 +447,14 @@
   .big-b {
     position: absolute;
     z-index: -1;
-    bottom: 30%;
-    right: 0;
+    bottom: 40%;
+    right: -10%;
     width: 100%;
 
     @include tablet {
-      bottom: auto;
-      top: 0;
+      right: -5%;
+      // bottom: auto;
+      // top: 0;
 
     }
   }
@@ -491,6 +498,9 @@
 
   @include laptop {
     padding-top: 90px
+  }
+  .section-title{
+    margin-bottom: 0;
   }
 }
 
@@ -566,9 +576,14 @@
     padding: 40px 40px;
     border-radius: 16px;
     width: calc(50% - 10px);
-    aspect-ratio: 1/1.14;
+    aspect-ratio: 1/0.9;
   }
-
+  &:hover {
+    .project-card__img-wrap img {
+      transform: scale(1.1) !important;
+      
+    }
+  }
   &__title {
     @include article-title;
     color: $text-color;
@@ -583,11 +598,22 @@
     left: 0;
     width: 100%;
     height: 100%;
-
+    
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(30, 30, 30, 0.80) 0%, rgba(30, 30, 30, 0.00) 23.2%), linear-gradient(180deg, rgba(30, 30, 30, 0.00) 76.06%, rgba(30, 30, 30, 0.90) 100%);
+    }
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 0.5s ease-in-out;
     }
   }
 
@@ -675,12 +701,12 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 20px;
+  gap: 10px;
   width: 100%;
   margin-top: -70vw;
 
   @include tablet {
-    gap: 40px;
+    gap: 20px;
     flex-wrap: wrap;
     flex-direction: row;
     margin-top: -15vw;
@@ -786,38 +812,38 @@
   z-index: 2;
   overflow: hidden;
   // padding-top: 50px;
-  padding-top: 127px;
+  padding-top: 70px;
 
-  &::before {
-    content: "";
-    position: absolute;
-    z-index: 3;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 35%;
-    background-color: $bg-color;
-  }
+  // &::before {
+  //   content: "";
+  //   position: absolute;
+  //   z-index: 3;
+  //   top: 0;
+  //   right: 0;
+  //   width: 100%;
+  //   height: 35%;
+  //   background-color: $bg-color;
+  // }
 
-  &::after {
-    content: "";
-    position: absolute;
-    z-index: 3;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 35%;
-    background-color: $bg-color;
-  }
+  // &::after {
+  //   content: "";
+  //   position: absolute;
+  //   z-index: 3;
+  //   bottom: 0;
+  //   right: 0;
+  //   width: 100%;
+  //   height: 35%;
+  //   background-color: $bg-color;
+  // }
 
   @include tablet {
     // padding-top: 30px;
-    padding-top: 184px;
+    padding-top: 110px;
   }
 
   @include laptop {
     // padding-top: 40px;
-    padding-top: 197px;
+    padding-top: 120px;
     .video-frame {
       &::before {
         content: "";
@@ -858,6 +884,10 @@
 }
 
 .story {
+  position: relative;
+  z-index: 3;
+  background-color: $bg-color;
+  min-height: 101svh;
   &-title {
     @include super-title;
     color: $accent-color;
@@ -890,6 +920,7 @@
       @include tablet {
         width: calc(50% - 10px);
         max-width: none;
+        padding-left: 0px;
       }
 
       @include laptop {
@@ -908,8 +939,15 @@
   }
 }
 .process.section {
+   z-index: 10;
+   background-color: $bg-color;
 @include laptop {
-padding-bottom: 350px;}
+ 
+padding-bottom: 350px;
+}
+}
+.process .section-title {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 0, 0% 0%),
 }
 .swiper-process {
   .swiper-wrapper {

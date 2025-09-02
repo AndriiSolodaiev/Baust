@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   z-index: 100;
-  
+  transform: translateY(-100%);
 }
 .header-bg {
   display: flex;
@@ -43,7 +43,11 @@ border-right: 1px solid rgba(242, 239, 233, 0.10);
   padding-right:30px ;
 }
 @include laptop {
+  transition: all 0.5s ease;
   padding-right:40px ;
+  &:hover {
+  text-shadow: 0 0 10px #8a8a8a, 0 0 20px #8a8a8a, 0 0 30px #8a8a8a;
+}
 }
 span {
   @include block-title;
@@ -83,9 +87,55 @@ width: 100%;
   font-weight: 500;
   display: flex;
   align-items: center;
-  gap: 40px;
+  // gap: 40px;
   margin-right: auto;
+  @include laptop {
+    
+     a {
+  text-decoration: none;
+  position: relative;
+  padding: 10px 20px;
+  transition: all 0.5s ease;
+}
+
+a::before,
+a::after {
+  content: "";
+  position: absolute;
+  display: block;
+  border: 0 solid transparent;
+  width: 0%;
+  height: 0%;
+  transition: all 0.5s ease;
+  border-radius: 12px;
   
+}
+
+a::after {
+  top: 0;
+  left: 0;
+  border-top: 1px solid transparent;
+  border-left: 1px solid transparent;
+}
+
+a::before {
+  right: 0;
+  bottom: 0;
+  border-bottom: 1px solid transparent;
+  border-right: 1px solid transparent;
+}
+
+a:hover::before,
+a:hover::after {
+  width: 100%;
+  height: 100%;
+  border-color: rgba(242, 239, 233, 0.1);
+}
+a:hover {
+  text-shadow: 0 0 10px #8a8a8a, 0 0 20px #8a8a8a, 0 0 30px #8a8a8a;
+}
+
+  }
 }
 
 .socials-list {
@@ -202,7 +252,7 @@ height: 24px;
       height: 100%;
       border-radius: 8px;
       background-color: $bc;
-      transform: translateX(-100%);
+      transform: translateX(calc(-100% - 1px));
       z-index: 1;
       transition: transform 0.8s $cubic-btn;
     }
@@ -343,7 +393,7 @@ span {
 .menu-overlay {
   position: fixed;
   z-index: -1;
-  height: 100%;
+  height: 100svh;
   width: 100%;
   top: 0;
   left: 0;
@@ -417,7 +467,7 @@ span {
     opacity: 0;
     text-decoration:underline;
   }
-
+  
 }
 .menu-bottom {
  

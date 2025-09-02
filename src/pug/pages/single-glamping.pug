@@ -38,7 +38,7 @@ block content
     .hero-bottom-block 
       p.section-descr.tablet-mode Modular glamping unit, ready for any climate, priced at 
         span.accent-color €70,000.
-      a(href="/houses").general-btn
+      a(href="#calculator").general-btn
         .hover-wrap
           .svg-wrap 
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -171,6 +171,74 @@ block content
       button.header-btn(data-mobile-pause) 
         .hover-wrap
           span Pause
+  section.calculator.container(id="calculator")
+    h2.section-title ROI
+      span Calculator
+    .calculator__inner
+      .calculator__controls-wrap
+        h3.calculator__title Evaluate the effectiveness of your investments
+        .calculator__info-wrap 
+          button.info-btn
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M9.09658 6.42198L6.80658 6.70898L6.72458 7.08898L7.17458 7.17198C7.46858 7.24198 7.52658 7.34798 7.46258 7.64098L6.72458 11.109C6.53058 12.006 6.82958 12.428 7.53258 12.428C8.07758 12.428 8.71058 12.176 8.99758 11.83L9.08558 11.414C8.88558 11.59 8.59358 11.66 8.39958 11.66C8.12458 11.66 8.02458 11.467 8.09558 11.127L9.09658 6.42198ZM9.16658 4.33398C9.16658 4.5992 9.06122 4.85355 8.87368 5.04109C8.68615 5.22863 8.43179 5.33398 8.16658 5.33398C7.90136 5.33398 7.64701 5.22863 7.45947 5.04109C7.27194 4.85355 7.16658 4.5992 7.16658 4.33398C7.16658 4.06877 7.27194 3.81441 7.45947 3.62688C7.64701 3.43934 7.90136 3.33398 8.16658 3.33398C8.43179 3.33398 8.68615 3.43934 8.87368 3.62688C9.06122 3.81441 9.16658 4.06877 9.16658 4.33398Z" fill="#E0F09D"/>
+            </svg>
+          .calculator__info-popup 
+            p Nightly rate — average price per night per unit. The price range is based on the lowest and highest competitor prices.
+            p Occupancy rate — average percentage of nights sold in a year (out of 365). Calculated using the average values of European competitors.
+            p Number of units — total number of units in the portfolio. The more units, the lower the costs per unit and the higher the profit.
+            p Operating costs — share of expenses as a % of revenue (cleaning, laundry, management/OTA fees, energy, minor repairs, insurance, marketing, land rent, etc.). Calculated using the average values of glamping sites in Europe.
+        .calculator__controls
+          .calculator__control
+            label(for="nightly-rate") Nightly rate:
+              span.range-min €150 - 
+              span.range-max &nbsp€1200
+            input#nightly-rate(type="text" name="nightly-rate" data-range="nightly-rate")
+
+          .calculator__control
+            label(for="occupancy-rate") Occupancy rate:
+              span.range-min 40% - 
+              span.range-max &nbsp95%
+            input#occupancy-rate(type="text" name="occupancy-rate" data-range="occupancy-rate")
+
+          .calculator__control
+            label(for="units") Number of units:
+              span.range-min 1 - 
+              span.range-max &nbsp50
+            input#units(type="text" name="units" data-range="units")
+
+          .calculator__control
+            label(for="operating-costs") Operating costs:
+              span.range-min 30% - 
+              span.range-max &nbsp70%
+            input#operating-costs(type="text" name="operating-costs" data-range="operating-costs")
+      .calculator__results-wrap
+        .calculator__results
+          .calculator__result(data-result="total-income")
+            span.title Total annual income:
+            span.value-wrap
+              span.currency €&nbsp
+              span.value(data-value="total-income") 426 540
+              span.unit &nbsp/year
+
+          .calculator__result(data-result="net-income")
+            span.title Net annual income:
+            strong.value-wrap
+              span.currency €&nbsp
+              span.value(data-value="net-income") 36 540
+              span.unit &nbsp/year
+
+          .calculator__result(data-result="roi")
+            span.title Estimated ROI:
+            span.value-wrap
+              span.value(data-value="roi") 45
+              span.big-unit &nbsp%
+
+          .calculator__result(data-result="payback")
+            span.title Payback period:
+            span.value-wrap
+              span.value(data-value="payback") 2–4
+              span.big-unit &nbspyears
+        p.calculator__disclaimer *The calculations are indicative and do not constitute financial advice.
   section.gallery 
     .swiper-gallery 
       .swiper-btn-wrap.container 
