@@ -357,8 +357,8 @@ $(document).ready(function () {
   // ініціалізація слайдерів
   const nightlySlider = $("#nightly-rate").ionRangeSlider({
     skin: "round",
-    min: 150,
-    max: 1200,
+    min: $("#nightly-rate").data("min") || 151,
+    max: $("#nightly-rate").data("max") || 1201,
     from: 180,
     step: 1,
     onFinish: calculate   // ✅ рахує тільки після відпускання повзунка
@@ -366,8 +366,8 @@ $(document).ready(function () {
 
   const occupancySlider = $("#occupancy-rate").ionRangeSlider({
     skin: "round",
-    min: 40,
-    max: 95,
+    min: $("#occupancy-rate").data("min") || 41,
+    max: $("#occupancy-rate").data("max") || 95,
     from: 60,
     step: 1,
     onFinish: calculate
@@ -375,17 +375,17 @@ $(document).ready(function () {
 
   const unitsSlider = $("#units").ionRangeSlider({
     skin: "round",
-    min: 1,
-    max: 50,
-    from: 35,
+    min: $("#units").data("min") || 1,
+    max:  $("#units").data("max") || 51,
+    from: 10,
     step: 1,
     onFinish: calculate
   }).data("ionRangeSlider");
 
   const operatingSlider = $("#operating-costs").ionRangeSlider({
     skin: "round",
-    min: 30,
-    max: 70,
+    min: $("#operating-costs").data("min") || 31,
+    max: $("#operating-costs").data("max") || 71,
     from: 60,
     step: 1,
     onFinish: calculate

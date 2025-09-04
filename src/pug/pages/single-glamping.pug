@@ -192,25 +192,25 @@ block content
             label(for="nightly-rate") Nightly rate:
               span.range-min €150 - 
               span.range-max &nbsp€1200
-            input#nightly-rate(type="text" name="nightly-rate" data-range="nightly-rate")
+            input#nightly-rate(type="text" name="nightly-rate" data-range="nightly-rate" data-min="150" data-max="1200")
 
           .calculator__control
             label(for="occupancy-rate") Occupancy rate:
               span.range-min 40% - 
               span.range-max &nbsp95%
-            input#occupancy-rate(type="text" name="occupancy-rate" data-range="occupancy-rate")
+            input#occupancy-rate(type="text" name="occupancy-rate" data-range="occupancy-rate" data-min="40" data-max="95")
 
           .calculator__control
             label(for="units") Number of units:
               span.range-min 1 - 
               span.range-max &nbsp50
-            input#units(type="text" name="units" data-range="units")
+            input#units(type="text" name="units" data-range="units" data-min="1" data-max="50")
 
           .calculator__control
             label(for="operating-costs") Operating costs:
               span.range-min 30% - 
               span.range-max &nbsp70%
-            input#operating-costs(type="text" name="operating-costs" data-range="operating-costs")
+            input#operating-costs(type="text" name="operating-costs" data-range="operating-costs" data-min="30" data-max="70")
       .calculator__results-wrap
         .calculator__results
           .calculator__result(data-result="total-income")
