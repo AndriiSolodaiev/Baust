@@ -182,13 +182,13 @@ const swiperDiscover = new Swiper('.swiper-discover', {
 });
 
 
-ScrollTrigger.create({
-  trigger: ".filler",
-  start: "top top",
-  end: "+=100%",
-  pin: true,
-  pinSpacing: false
-});
+// ScrollTrigger.create({
+//   trigger: ".filler",
+//   start: "top top",
+//   end: "+=100%",
+//   pin: true,
+//   pinSpacing: false
+// });
 const tlFiller = gsap.timeline({
   scrollTrigger: {
     trigger: ".filler",

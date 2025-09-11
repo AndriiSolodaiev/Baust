@@ -6,13 +6,13 @@ import { gsap, ScrollTrigger, CustomEase, CSSRulePlugin } from 'gsap/all';
 
 gsap.registerPlugin(ScrollTrigger, CustomEase, CSSRulePlugin);
 
-ScrollTrigger.create({
-  trigger: ".filler",
-  start: "top top",
-  end: "+=100%",
-  pin: true,
-  pinSpacing: false
-});
+// ScrollTrigger.create({
+//   trigger: ".filler",
+//   start: "top top",
+//   end: "+=100%",
+//   pin: true,
+//   pinSpacing: false
+// });
 
 gsap.fromTo(".filler.sg .section-title, .filler.sg .hero-slogan, .filler.sg .section-descr, .filler.sg .general-btn", {
   y: 80,
@@ -86,7 +86,7 @@ slides.forEach((slide, index) => {
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: ".swiper-process",
-      start: "top 80%", // коли верх слайду входить в нижню частину в'юпорту
+      start: "top bottom", // коли верх слайду входить в нижню частину в'юпорту
     }
   });
 
@@ -200,7 +200,7 @@ slidesCases.forEach((slide, index) => {
   const tlCases = gsap.timeline({
     scrollTrigger: {
       trigger: ".swiper-cases",
-      start: "top 80%", // коли верх слайду входить в нижню частину в'юпорту
+      start: "top bottom", // коли верх слайду входить в нижню частину в'юпорту
     }
   });
 

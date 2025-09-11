@@ -35,7 +35,7 @@
   padding-bottom: 180px;
   }
 }
-.details-container{
+.details-container {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -44,6 +44,7 @@
   }
   @include laptop {
     flex-direction: row-reverse;
+
   }
 }
 
@@ -53,6 +54,9 @@
   @include tablet {
     display: flex;
     align-items: stretch;
+  }
+  @include laptop {
+    flex:3;
   }
 }
 
@@ -106,7 +110,7 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-bottom: 30px;
+    // margin-bottom: 30px;
 
   }
   &__descr-item{
@@ -143,6 +147,7 @@
   @include laptop {
     width: 30%;
     aspect-ratio: auto;
+    flex:1;
   }
   &:hover {
     img {

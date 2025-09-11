@@ -54,15 +54,18 @@ document.body.addEventListener('click', function(evt) {
   }
   if (btn) {
     if (overflow.classList.contains('hidden')) {
-      
+      window.dispatchEvent(new Event('stop-scroll'));
       return overflow.classList.remove('hidden');
     }
     return;
   }
   if (close) {
+    window.dispatchEvent(new Event('start-scroll'));
     return overflow.classList.add('hidden');
+    
   }
   if ( evt.target === overflow) {
+    window.dispatchEvent(new Event('start-scroll'));
     return overflow.classList.add('hidden');
   }
 });

@@ -165,6 +165,7 @@
     border-radius: 8px;
     @include tablet {
       padding: 10px;
+      padding-bottom: 0;
     }
     img {
       border-radius: 8px;
@@ -188,6 +189,10 @@
     margin-bottom: 20px;
      @include tablet {
       margin-bottom: 30px;
+      font-size: 2.6vw;
+    }
+    @include laptop {
+      font-size: 1.25vw;
     }
     
   }
@@ -238,7 +243,7 @@
       margin-bottom: 40px;
     }
     @include laptop {
-      margin-bottom: 60px;
+      margin-bottom: 40px;
     }
   span {
     opacity: 0.5;
@@ -268,8 +273,8 @@
     transform: translateY(-50%);
     display: flex;
     justify-content: space-between;
-    padding-left: 40px;
-    padding-right: 40px;
+    // padding-left: 40px;
+    // padding-right: 40px;
     pointer-events: none;
     cursor: pointer;
   }

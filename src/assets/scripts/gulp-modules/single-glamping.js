@@ -9,13 +9,13 @@ import $ from 'jquery';
 gsap.registerPlugin(ScrollTrigger, CustomEase, CSSRulePlugin);
 
 
-ScrollTrigger.create({
-  trigger: ".filler",
-  start: "top top",
-  end: "+=100%",
-  pin: true,
-  pinSpacing: false
-});
+// ScrollTrigger.create({
+//   trigger: ".filler",
+//   start: "top top",
+//   end: "+=100%",
+//   pin: true,
+//   pinSpacing: false
+// });
 
 gsap.fromTo(".filler.sg .section-title, .filler.sg .hero-slogan, .filler.sg .section-descr, .filler.sg .general-btn", {
   y: 80,

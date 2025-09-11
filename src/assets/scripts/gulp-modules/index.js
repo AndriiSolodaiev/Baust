@@ -34,7 +34,7 @@ tl.from(".svg-map-wrap", {
   ease: "power3.out",
  clipPath: "polygon(0% 0%, 100% 0%, 100% 0, 0% 0%)",
 }, {
-  duration: 1.5,
+  duration: 1,
   clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
  y:0}, "<")
 
@@ -86,7 +86,7 @@ tlFiller
   ease: "power2.out",
   
 }, {
-  duration:2,
+  duration:1,
   scale: 1,
   ease: "power2.out"
 })
@@ -142,7 +142,7 @@ slides.forEach((slide, index) => {
   const tlProcess = gsap.timeline({
     scrollTrigger: {
       trigger: ".swiper-process",
-      start: "top 80%", // коли верх слайду входить в нижню частину в'юпорту
+      start: "top bottom", // коли верх слайду входить в нижню частину в'юпорту
       end: "bottom center",
     }
   });
@@ -154,7 +154,7 @@ slides.forEach((slide, index) => {
   ease: "power3.out",
  clipPath: "polygon(0% 0%, 100% 0%, 100% 0, 0% 0%)",
 }, {
-  duration: 1.5,
+  duration: 1,
   clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
  y:0}).from(slide, {
     y: 100,
@@ -167,15 +167,16 @@ slides.forEach((slide, index) => {
     },
     {
       scale: 1,
-      duration: 1.2,
+      duration: 1,
       ease: "power3.out"
-    }, "<");
+    }, "<")
+    ;
 });
 
 gsap.fromTo(".hero .section-title, .hero .hero-slogan, .hero .section-descr, .hero .hero-bottom-block", {
   y: 80,
   stagger: 0.2,
-  duration: 1.2,
+  duration: 1,
   ease: "power3.out",
  clipPath: "polygon(0% 0%, 100% 0%, 100% 0, 0% 0%)",
 }, {
@@ -218,13 +219,13 @@ gsap.timeline({
   "<+=0.1"
 );
 
-ScrollTrigger.create({
-  trigger: ".filler",
-  start: "top top",
-  end: "+=100%",
-  pin: true,
-  pinSpacing: false
-});
+// ScrollTrigger.create({
+//   trigger: ".filler",
+//   start: "top top",
+//   end: "+=100%",
+//   pin: true,
+//   pinSpacing: false
+// });
 
 // === story ===
 // Анімації для story
@@ -268,7 +269,7 @@ gsap.timeline({
   ease: "power3.out",
  clipPath: "polygon(0% 0%, 100% 0%, 100% 0, 0% 0%)",
 }, {
-  duration: 1.5,
+  duration: 1,
   clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
  y:0})
  .fromTo(".project-card",
@@ -277,7 +278,7 @@ gsap.timeline({
   ease: "power3.out",
  clipPath: "polygon(0% 50%, 100% 50%, 100% 50%, 0% 50%)"
 }, {
-  duration: 1.5,
+  duration: 1,
   clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
  }, "<"
   ).fromTo(".project-card img",
@@ -287,7 +288,7 @@ gsap.timeline({
  scale: 1.5,
 }, {
   stagger:0.2,
-  duration: 1.5,
+  duration: 1,
   scale: 1,
  }, "<"
   )

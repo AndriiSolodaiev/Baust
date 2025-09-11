@@ -481,7 +481,7 @@
   bottom: 0;
   right: 0;
   width: 100%;
-
+  pointer-events: none;
   &>svg {
     width: 100%;
     height: auto;
@@ -578,10 +578,16 @@
     width: calc(50% - 10px);
     aspect-ratio: 1/0.9;
   }
+  .project-card__bottom svg {
+      transition: transform 0.5s ease-in-out;
+    }
   &:hover {
     .project-card__img-wrap img {
       transform: scale(1.1) !important;
       
+    }
+    .project-card__bottom svg {
+      transform: rotate(45deg)
     }
   }
   &__title {
