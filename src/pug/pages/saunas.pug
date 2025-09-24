@@ -24,36 +24,36 @@ block scripts
   script(defer src='./assets/scripts/footer.bundle.js')
   script(defer src='./assets/scripts/saunas.bundle.js')
 block content
-  section.hero.glampings
-
-    .swiper-hero
-      .swiper-wrapper
-        .swiper-slide(data-title="Sauna L" data-from="€ 17 900" data-area="19.15 m²" data-link="/single-sauna.html")
-          img(src="./assets/images/glampings.jpg", alt="glamping S")
-        .swiper-slide(data-title="Sauna M" data-from="€ 22 500" data-area="25.5 m²" data-link="/single-sauna.html")
-          img(src="./assets/images/card2.jpg", alt="glamping M")
-        .swiper-slide(data-title="Sauna S" data-from="€ 28 500" data-area="25.5 m²" data-link="/house3")
-          img(src="./assets/images/card1.jpg", alt="glamping M")
-      .container
-        h1.section-title Sauna L
-        .glampings-descr-wrap
-          .glampings-descr
-            p.glampings-descr__label From:
-            p.glampings-descr__value € 17 900
-          .glampings-descr
-            p.glampings-descr__label Total area:
-            p.glampings-descr__value 19.15 m²
-      .hero-bottom-block
-        .slider-numbers.tablet-mode
-          span.current-slides-number 01
-          span  / 
-          span.total-slides-number 02
-        a(href="/single-sauna.html" data-house-link).general-btn
-          .hover-wrap
-            .svg-wrap
-              svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none")
-                path(d="M7.22703 6.77297H16.773V16.3189M16.1101 7.43588L6.43153 17.1144" stroke="#E0F09D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round")
-            span House viewing
+  section.glampings-total
+    .hero.glampings
+      .swiper-hero
+        .swiper-wrapper
+          .swiper-slide(data-title="Sauna L" data-from="€ 17 900" data-area="19.15 m²" data-link="/single-sauna.html")
+            img(src="./assets/images/glampings.jpg", alt="glamping S")
+          .swiper-slide(data-title="Sauna M" data-from="€ 22 500" data-area="25.5 m²" data-link="/single-sauna.html")
+            img(src="./assets/images/card2.jpg", alt="glamping M")
+          .swiper-slide(data-title="Sauna S" data-from="€ 28 500" data-area="25.5 m²" data-link="/house3")
+            img(src="./assets/images/card1.jpg", alt="glamping M")
+        .container
+          h1.section-title Sauna L
+          .glampings-descr-wrap
+            .glampings-descr
+              p.glampings-descr__label From:
+              p.glampings-descr__value € 17 900
+            .glampings-descr
+              p.glampings-descr__label Total area:
+              p.glampings-descr__value 19.15 m²
+        .hero-bottom-block
+          .slider-numbers.tablet-mode
+            span.current-slides-number 01
+            span  / 
+            span.total-slides-number 02
+          a(href="/single-sauna.html" data-house-link).general-btn
+            .hover-wrap
+              .svg-wrap
+                svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none")
+                  path(d="M7.22703 6.77297H16.773V16.3189M16.1101 7.43588L6.43153 17.1144" stroke="#E0F09D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round")
+              span House viewing
   section.discover.container
     .big-b b
     .decor-svg 
