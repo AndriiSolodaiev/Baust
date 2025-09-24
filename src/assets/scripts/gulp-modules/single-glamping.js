@@ -1,13 +1,10 @@
-
 import Swiper, { Autoplay, EffectFade, Navigation, Grid } from 'swiper';
 import { gsap, ScrollTrigger, CustomEase, CSSRulePlugin } from 'gsap/all';
 import 'ion-rangeslider';
 // import 'ion-rangeslider/css/ion.rangeSlider.min.css';
 import $ from 'jquery';
 
-
 gsap.registerPlugin(ScrollTrigger, CustomEase, CSSRulePlugin);
-
 
 // ScrollTrigger.create({
 //   trigger: ".filler",
@@ -17,129 +14,139 @@ gsap.registerPlugin(ScrollTrigger, CustomEase, CSSRulePlugin);
 //   pinSpacing: false
 // });
 
-gsap.fromTo(".filler.sg .section-title, .filler.sg .hero-slogan, .filler.sg .section-descr, .filler.sg .general-btn", {
-  y: 80,
-  stagger: 0.2,
-  duration: 1.2,
-  ease: "power3.out",
- clipPath: "polygon(0% 0%, 100% 0%, 100% 0, 0% 0%)",
-}, {
-  clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
- y:0})
 gsap.fromTo(
- ".filler.sg img", {
-  scale: 1.4,
-  
- }, 
- {
-  scale: 1,
-duration: 1.2,
-  ease: "power3.out",
- }, 
- )
+  '.filler.sg .section-title, .filler.sg .hero-slogan, .filler.sg .section-descr, .filler.sg .general-btn',
+  {
+    y: 80,
+    stagger: 0.2,
+    duration: 1.2,
+    ease: 'power3.out',
+    clipPath: 'polygon(0% 0%, 100% 0%, 100% 0, 0% 0%)',
+  },
+  {
+    clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+    y: 0,
+  },
+);
+gsap.fromTo(
+  '.filler.sg img',
+  {
+    scale: 1.4,
+  },
+  {
+    scale: 1,
+    duration: 1.2,
+    ease: 'power3.out',
+  },
+);
 
-gsap.timeline({
-  scrollTrigger: {
-    trigger: ".features",
-    start: "top 80%",
-    end: "center 20%",
-    // scrub: true
-  }
-})
-.from(".features-title", {
-  xPercent: -50,
-  
-  duration: 2,
-  ease: "power3.out"
-})
+gsap
+  .timeline({
+    scrollTrigger: {
+      trigger: '.features',
+      start: 'top 80%',
+      end: 'center 20%',
+      // scrub: true
+    },
+  })
+  .from('.features-title', {
+    xPercent: -50,
+
+    duration: 2,
+    ease: 'power3.out',
+  });
 
 const swiperProcess = new Swiper('.swiper-process', {
   modules: [Grid],
-    speed: 600,
-    grabCursor: true,
-    spaceBetween: 20,
-    loop: false,
-    
-    slidesPerView: 1.2,
-    breakpoints: {
-      768: {
-        slidesPerView: 2.1,
-        spaceBetween: 20,
-      },
-       1366: {
-        slidesPerView: 4,
-        spaceBetween: 20,
-        grid: {
-          rows: 2,
-          fill: "row"
-        },
-      }
-    }
-   
-  });
+  speed: 600,
+  grabCursor: true,
+  spaceBetween: 20,
+  loop: false,
 
-  const slides = document.querySelectorAll(".swiper-process .swiper-slide");
+  slidesPerView: 1.2,
+  breakpoints: {
+    768: {
+      slidesPerView: 2.1,
+      spaceBetween: 20,
+    },
+    1366: {
+      slidesPerView: 4,
+      spaceBetween: 20,
+      grid: {
+        rows: 2,
+        fill: 'row',
+      },
+    },
+  },
+});
+
+const slides = document.querySelectorAll('.swiper-process .swiper-slide');
 
 slides.forEach((slide, index) => {
-  const img = slide.querySelector(".process__img-wrap img");
+  const img = slide.querySelector('.process__img-wrap img');
 
   const scaleFrom = index % 2 === 1 ? 1.8 : 1.2;
 
   const tl = gsap.timeline({
     scrollTrigger: {
-      trigger: ".swiper-process",
-      start: "top 80%", // коли верх слайду входить в нижню частину в'юпорту
-    }
+      trigger: '.swiper-process',
+      start: 'top 80%', // коли верх слайду входить в нижню частину в'юпорту
+    },
   });
 
   // Картка
-  tl.from(slide, {
-    y: 100,
-    opacity: 0,
-    duration: 0.6,
-    ease: "power2.out"
-  },"<").fromTo(img, 
+  tl.from(
+    slide,
+    {
+      y: 100,
+      opacity: 0,
+      duration: 0.6,
+      ease: 'power2.out',
+    },
+    '<',
+  ).fromTo(
+    img,
     {
       scale: scaleFrom,
     },
     {
       scale: 1,
       duration: 1.2,
-      ease: "power3.out"
-    }, 0);
+      ease: 'power3.out',
+    },
+    0,
+  );
 });
 
-
-document.addEventListener("DOMContentLoaded", () => {
-  const overlay = document.querySelector(".room-tour .room-tour-block");
-  const topText = document.querySelector(".room-tour .top-text-wrap");
-  const btnExplore = document.querySelector("[data-mobile-explore]");
-  const btnPause = document.querySelector("[data-mobile-pause]");
+document.addEventListener('DOMContentLoaded', () => {
+  const overlay = document.querySelector('.room-tour .room-tour-block');
+  const topText = document.querySelector('.room-tour .top-text-wrap');
+  const btnExplore = document.querySelector('[data-mobile-explore]');
+  const btnPause = document.querySelector('[data-mobile-pause]');
 
   // Початковий стан
-  btnExplore.addEventListener("click", () => {
+  btnExplore.addEventListener('click', () => {
     // Ховаємо верхній текст
-    gsap.to(topText, { duration: 0.4, autoAlpha: 0, y: -20, ease: "power2.out" });
+    gsap.to(topText, { duration: 0.4, autoAlpha: 0, y: -20, ease: 'power2.out' });
     // Прозорий фон та вимкнення взаємодії
-    gsap.to(overlay, { duration: 0.4, autoAlpha: 0, ease: "power2.out" });
-    
+    gsap.to(overlay, { duration: 0.4, autoAlpha: 0, ease: 'power2.out' });
+
     // Перемикаємо кнопки
-    gsap.set(btnExplore, { display: "none" });
-    gsap.set(btnPause, { display: "block",opacity: 1});
+    gsap.set(btnExplore, { display: 'none' });
+    gsap.set(btnPause, { display: 'block', opacity: 1 });
   });
 
-  btnPause.addEventListener("click", () => {
+  btnPause.addEventListener('click', () => {
     // Повертаємо верхній текст
-    gsap.to(topText, { duration: 0.4, autoAlpha: 1, y: 0, ease: "power2.out" });
+    gsap.to(topText, { duration: 0.4, autoAlpha: 1, y: 0, ease: 'power2.out' });
 
     // Повертаємо фон і взаємодію
-    gsap.to(overlay, { duration: 0.4, autoAlpha: 1, ease: "power2.out" });
-    
+    gsap.to(overlay, { duration: 0.4, autoAlpha: 1, ease: 'power2.out' });
 
     // Перемикаємо кнопки назад
-    gsap.set(btnPause, { display: "none" });
+    gsap.set(btnPause, { display: 'none' });
     // gsap.to(btnPause, { duration: 0.3, autoAlpha: 0, display: "none" });
-    gsap.set(btnExplore, { display: "block" });
+    gsap.set(btnExplore, { display: 'block' });
     // gsap.to(btnExplore, { duration: 0.3, autoAlpha: 1 });
   });
 });
@@ -150,40 +157,40 @@ const swipergallery = new Swiper('.swiper-gallery', {
   speed: 700,
   slidesPerView: 1,
   // spaceBetween: 16,
-    loop: false,
-    navigation: {
-      nextEl: '[data-gallery-next-btn]',
-      prevEl: '[data-gallery-prev-btn]',
-    },
-    on: {
-    init: function () {
+  loop: false,
+  navigation: {
+    nextEl: '[data-gallery-next-btn]',
+    prevEl: '[data-gallery-prev-btn]',
+  },
+  on: {
+    init: function() {
       // Встановлюємо загальну кількість слайдів
       totalEl.textContent = String(this.slides.length).padStart(2, '0');
       // Поточний слайд
       currentEl.textContent = String(this.realIndex + 1).padStart(2, '0');
     },
-    slideChange: function () {
+    slideChange: function() {
       animateSlideNumber(this.realIndex + 1);
-    }
-  }
-    
-    // breakpoints: {
-    //   768: {
+    },
+  },
 
-    //     slidesPerView: 1.8,
-    //     spaceBetween: 20,
-    //   },
-    //    1366: {
-    //     slidesPerView: 3,
-    //     spaceBetween: 20,
-        
-    //   }
-    // }
+  // breakpoints: {
+  //   768: {
+
+  //     slidesPerView: 1.8,
+  //     spaceBetween: 20,
+  //   },
+  //    1366: {
+  //     slidesPerView: 3,
+  //     spaceBetween: 20,
+
+  //   }
+  // }
 });
 
 function animateSlideNumber(newIndex) {
   const oldNumber = currentEl.textContent;
-  
+
   // Анімуємо старий номер вгору та прозорість
   gsap.to(currentEl, {
     y: -20,
@@ -194,75 +201,89 @@ function animateSlideNumber(newIndex) {
       // Змінюємо текст
       currentEl.textContent = String(newIndex).padStart(2, '0');
       // Переміщаємо вниз і знову показуємо
-      gsap.fromTo(currentEl,
+      gsap.fromTo(
+        currentEl,
         { y: 20, opacity: 0 },
-        { y: 0, opacity: 0.6, duration: 0.3, ease: 'power2.out' }
+        { y: 0, opacity: 0.6, duration: 0.3, ease: 'power2.out' },
       );
-    }
+    },
   });
 }
 
-
 const swiperCases = new Swiper('.swiper-cases', {
-    speed: 600,
-    grabCursor: true,
-    spaceBetween: 20,
-    loop: false,
-    
-    slidesPerView: 1.2,
-    breakpoints: {
-      768: {
-        slidesPerView: 2.1,
-        spaceBetween: 20,
-      },
-       1366: {
-        slidesPerView: 4,
-        spaceBetween: 20,
-        
-      }
-    }
-   
-  });
+  speed: 600,
+  grabCursor: true,
+  spaceBetween: 20,
+  loop: false,
 
-  const slidesCases = document.querySelectorAll(".swiper-cases .swiper-slide");
+  slidesPerView: 1.2,
+  breakpoints: {
+    768: {
+      slidesPerView: 2.1,
+      spaceBetween: 20,
+    },
+    1366: {
+      slidesPerView: 4,
+      spaceBetween: 20,
+    },
+  },
+});
+
+const slidesCases = document.querySelectorAll('.swiper-cases .swiper-slide');
 
 slidesCases.forEach((slide, index) => {
-  const img = slide.querySelector(".process__img-wrap img");
+  const img = slide.querySelector('.process__img-wrap img');
 
   const scaleFrom = index % 2 === 1 ? 1.8 : 1.2;
 
   const tlCases = gsap.timeline({
     scrollTrigger: {
-      trigger: ".swiper-cases",
-      start: "top 80%", // коли верх слайду входить в нижню частину в'юпорту
-    }
+      trigger: '.swiper-cases',
+      start: 'top 80%', // коли верх слайду входить в нижню частину в'юпорту
+    },
   });
 
   // Картка
-  tlCases.fromTo(".process .section-title", {
-  y: 80,
-  ease: "power3.out",
- clipPath: "polygon(0% 0%, 100% 0%, 100% 0, 0% 0%)",
-}, {
-  duration: 1.5,
-  clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
- y:0}).fromTo(slidesCases, {
-    y: 100,
-    opacity: 0,
-    duration: 0.6,
-    ease: "power2.out"
-  }, {
-    opacity: 1,
-    y: 0,
-  }, "<").fromTo(img, 
-    {
-      scale: scaleFrom,
-    },
-    {
-      scale: 1,
-      duration: 1.2,
-      ease: "power3.out"
-    }, 0);
+  tlCases
+    .fromTo(
+      '.process .section-title',
+      {
+        y: 80,
+        ease: 'power3.out',
+        clipPath: 'polygon(0% 0%, 100% 0%, 100% 0, 0% 0%)',
+      },
+      {
+        duration: 1.5,
+        clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+        y: 0,
+      },
+    )
+    .fromTo(
+      slidesCases,
+      {
+        y: 100,
+        opacity: 0,
+        duration: 0.6,
+        ease: 'power2.out',
+      },
+      {
+        opacity: 1,
+        y: 0,
+      },
+      '<',
+    )
+    .fromTo(
+      img,
+      {
+        scale: scaleFrom,
+      },
+      {
+        scale: 1,
+        duration: 1.2,
+        ease: 'power3.out',
+      },
+      0,
+    );
 });
 
 // const beforeRule = CSSRulePlugin.getRule(".filler::before");
@@ -273,7 +294,7 @@ slidesCases.forEach((slide, index) => {
 //     trigger: ".filler",
 //     start: "30% center",
 //     end: "bottom center",
-    
+
 //   }
 // });
 
@@ -308,7 +329,6 @@ slidesCases.forEach((slide, index) => {
 //   ease: "power2.out"
 // }, "<=0.2");
 
-
 const iframePopUp = document.querySelector('[data-iframe-modal]');
 const iframeOpen = document.querySelector('[data-iframe-open]');
 const iframeClose = document.querySelector('[data-iframe-close]');
@@ -330,130 +350,146 @@ if (iframeClose) {
     iframeWindow.src = '';
   });
 }
-gsap.timeline({
-  scrollTrigger: {
-    trigger: ".calculator",
-    start: "top 80%",
-    end: "center 20%",
-    // scrub: true
-  }
-})
-.from(".calculator .section-title", {
-  xPercent: -50,
-  
-  duration: 2,
-  ease: "power3.out"
-}).from(".calculator__inner", {
-  yPercent:10,
-  opacity:0,
-  duration: 1.2,
-}, "<+=0.2" )
+gsap
+  .timeline({
+    scrollTrigger: {
+      trigger: '.calculator',
+      start: 'top 80%',
+      end: 'center 20%',
+      // scrub: true
+    },
+  })
+  .from('.calculator .section-title', {
+    xPercent: -50,
 
+    duration: 1,
+    ease: 'power3.out',
+  })
+  .from(
+    '.calculator__inner',
+    {
+      yPercent: 10,
+      opacity: 0,
+      duration: 1.2,
+    },
+    '<+=0.2',
+  );
 
-$(document).ready(function () {
+$(document).ready(function() {
   const HOUSE_COST = 70000;
   const DAYS_IN_YEAR = 365;
 
   // ініціалізація слайдерів
-  const nightlySlider = $("#nightly-rate").ionRangeSlider({
-    skin: "round",
-    min: $("#nightly-rate").data("min") || 151,
-    max: $("#nightly-rate").data("max") || 1201,
-    from: 180,
-    step: 1,
-    onFinish: calculate   // ✅ рахує тільки після відпускання повзунка
-  }).data("ionRangeSlider");
+  const nightlySlider = $('#nightly-rate')
+    .ionRangeSlider({
+      skin: 'round',
+      min: $('#nightly-rate').data('min') || 151,
+      max: $('#nightly-rate').data('max') || 1201,
+      from: 180,
+      step: 1,
+      onFinish: calculate, // ✅ рахує тільки після відпускання повзунка
+    })
+    .data('ionRangeSlider');
 
-  const occupancySlider = $("#occupancy-rate").ionRangeSlider({
-    skin: "round",
-    min: $("#occupancy-rate").data("min") || 41,
-    max: $("#occupancy-rate").data("max") || 95,
-    from: 60,
-    step: 1,
-    onFinish: calculate
-  }).data("ionRangeSlider");
+  const occupancySlider = $('#occupancy-rate')
+    .ionRangeSlider({
+      skin: 'round',
+      min: $('#occupancy-rate').data('min') || 41,
+      max: $('#occupancy-rate').data('max') || 95,
+      from: 60,
+      step: 1,
+      onFinish: calculate,
+    })
+    .data('ionRangeSlider');
 
-  const unitsSlider = $("#units").ionRangeSlider({
-    skin: "round",
-    min: $("#units").data("min") || 1,
-    max:  $("#units").data("max") || 51,
-    from: 10,
-    step: 1,
-    onFinish: calculate
-  }).data("ionRangeSlider");
+  const unitsSlider = $('#units')
+    .ionRangeSlider({
+      skin: 'round',
+      min: $('#units').data('min') || 1,
+      max: $('#units').data('max') || 51,
+      from: 10,
+      step: 1,
+      onFinish: calculate,
+    })
+    .data('ionRangeSlider');
 
-  const operatingSlider = $("#operating-costs").ionRangeSlider({
-    skin: "round",
-    min: $("#operating-costs").data("min") || 31,
-    max: $("#operating-costs").data("max") || 71,
-    from: 60,
-    step: 1,
-    onFinish: calculate
-  }).data("ionRangeSlider");
+  const operatingSlider = $('#operating-costs')
+    .ionRangeSlider({
+      skin: 'round',
+      min: $('#operating-costs').data('min') || 31,
+      max: $('#operating-costs').data('max') || 71,
+      from: 60,
+      step: 1,
+      onFinish: calculate,
+    })
+    .data('ionRangeSlider');
 
   // результати
-  const totalIncomeEl = document.querySelector(".calculator__result:nth-child(1) .value");
-  const netIncomeEl = document.querySelector(".calculator__result:nth-child(2) .value");
-  const roiEl = document.querySelector(".calculator__result:nth-child(3) .value");
-  const paybackEl = document.querySelector(".calculator__result:nth-child(4) .value");
+  const totalIncomeEl = document.querySelector('.calculator__result:nth-child(1) .value');
+  const netIncomeEl = document.querySelector('.calculator__result:nth-child(2) .value');
+  const roiEl = document.querySelector('.calculator__result:nth-child(3) .value');
+  const paybackEl = document.querySelector('.calculator__result:nth-child(4) .value');
 
   function formatNumber(num) {
-    return num.toLocaleString("en-US", { maximumFractionDigits: 0 });
+    return num.toLocaleString('en-US', { maximumFractionDigits: 0 });
   }
   function animateValue(el, start, end, duration = 800) {
-    if(end===start) return
-  const range = end - start;
-  const minTimer = 50;
-  const steps = Math.ceil(duration / minTimer);
-  let stepCount = 0;
+    if (end === start) return;
+    const range = end - start;
+    const minTimer = 50;
+    const steps = Math.ceil(duration / minTimer);
+    let stepCount = 0;
 
-  // на старті робимо напівпрозору
-  gsap.fromTo(el, {opacity:0.2, scale: 0.7}, {opacity: 1,scale: 1, duration: duration/1000})
-  // el.style.opacity = 0.4;
-  // el.style.transition = `opacity ${duration}ms ease`;
+    // на старті робимо напівпрозору
+    gsap.fromTo(
+      el,
+      { opacity: 0.2, scale: 0.7 },
+      { opacity: 1, scale: 1, duration: duration / 1000 },
+    );
+    // el.style.opacity = 0.4;
+    // el.style.transition = `opacity ${duration}ms ease`;
 
-  const timer = setInterval(() => {
-    stepCount++;
-    const progress = stepCount / steps;
-    const current = start + range * progress;
-    el.textContent = formatNumber(Math.round(current));
+    const timer = setInterval(() => {
+      stepCount++;
+      const progress = stepCount / steps;
+      const current = start + range * progress;
+      el.textContent = formatNumber(Math.round(current));
 
-    if (stepCount >= steps) {
-      clearInterval(timer);
-      el.textContent = formatNumber(end);
-      // el.style.opacity = 1; // фінал
-    }
-  }, minTimer);
+      if (stepCount >= steps) {
+        clearInterval(timer);
+        el.textContent = formatNumber(end);
+        // el.style.opacity = 1; // фінал
+      }
+    }, minTimer);
 
-  // паралельно анімуємо прозорість (плавно до 1)
-  // requestAnimationFrame(() => {
-  //   el.style.opacity = 1;
-  // });
-}
+    // паралельно анімуємо прозорість (плавно до 1)
+    // requestAnimationFrame(() => {
+    //   el.style.opacity = 1;
+    // });
+  }
   function calculate() {
-  const nightlyRate = nightlySlider.result.from;
-  const occupancyRate = occupancySlider.result.from / 100;
-  const units = unitsSlider.result.from;
-  const operatingCostsRate = operatingSlider.result.from / 100;
+    const nightlyRate = nightlySlider.result.from;
+    const occupancyRate = occupancySlider.result.from / 100;
+    const units = unitsSlider.result.from;
+    const operatingCostsRate = operatingSlider.result.from / 100;
 
-  const occupiedDays = DAYS_IN_YEAR * occupancyRate;
-  const totalIncome = Math.round(nightlyRate * occupiedDays * units);
-  const netIncome = Math.round(totalIncome * (1 - operatingCostsRate));
-  const investments = HOUSE_COST * units;
-  const roi = investments > 0 ? (netIncome / investments) * 100 : 0;
-  const payback = netIncome > 0 ? investments / netIncome : 0;
+    const occupiedDays = DAYS_IN_YEAR * occupancyRate;
+    const totalIncome = Math.round(nightlyRate * occupiedDays * units);
+    const netIncome = Math.round(totalIncome * (1 - operatingCostsRate));
+    const investments = HOUSE_COST * units;
+    const roi = investments > 0 ? (netIncome / investments) * 100 : 0;
+    const payback = netIncome > 0 ? investments / netIncome : 0;
 
-  // анімація для основних чисел
-  animateValue(totalIncomeEl, +totalIncomeEl.textContent.replace(/,/g, "") || 0, totalIncome);
-  animateValue(netIncomeEl, +netIncomeEl.textContent.replace(/,/g, "") || 0, netIncome);
-  // animateValue(roiEl, +roiEl.textContent.replace(/,/g, "") || 0, roi);
-  // animateValue(paybackEl, +paybackEl.textContent.replace(/,/g, "") || 0, payback);
-  // акуратне оновлення без анімації для відсотків і років
-  roiEl.textContent = roi.toFixed(1);
-  paybackEl.textContent = payback.toFixed(1);
-}
+    // анімація для основних чисел
+    animateValue(totalIncomeEl, +totalIncomeEl.textContent.replace(/,/g, '') || 0, totalIncome);
+    animateValue(netIncomeEl, +netIncomeEl.textContent.replace(/,/g, '') || 0, netIncome);
+    // animateValue(roiEl, +roiEl.textContent.replace(/,/g, "") || 0, roi);
+    // animateValue(paybackEl, +paybackEl.textContent.replace(/,/g, "") || 0, payback);
+    // акуратне оновлення без анімації для відсотків і років
+    roiEl.textContent = roi.toFixed(1);
+    paybackEl.textContent = payback.toFixed(1);
+  }
 
   // ⚡ перший запуск для початкових значень
   calculate();
 });
-
