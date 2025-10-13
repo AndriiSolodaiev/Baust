@@ -117,7 +117,7 @@ export default class SexyInput {
       /* eslint-disable */
       input.setAttribute('inputmode', 'tel');
       input.intTelIput = intlTelInput(input, {
-        preferredCountries: ['us', 'de'],
+        preferredCountries: [ 'gb','de', 'be', 'fr', 'us',],
         autoPlaceholder: 'off',
       });
       let cleave = new Cleave(input, {

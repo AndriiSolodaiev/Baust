@@ -184,12 +184,14 @@ gsap.fromTo(".hero .section-title, .hero .hero-slogan, .hero .section-descr, .he
  y:0})
  
 // 2. Hero піниться (але друга секція налізає)
-ScrollTrigger.create({
-  trigger: ".hero",
-  start: "top top",
-  end: "+=100%", 
-  pin: true,
-  pinSpacing: false // <-- без відступу!
+window.addEventListener("load", () => {
+  ScrollTrigger.create({
+    trigger: ".hero",
+    start: "top top",
+    // end: "+=100%",
+    pin: true,
+    pinSpacing: false
+  });
 });
 
 // 3. Анімації другої секції

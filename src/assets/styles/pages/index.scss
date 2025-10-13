@@ -188,50 +188,19 @@
     padding: 40px;
   }
 }
-
 .general-btn {
-  display: flex;
-  padding: 8px 8px;
-
-
-  border-radius: 12px;
-  background: $text-color;
+  border-radius: 8px;
+  background-color: $text-color;
+  padding: 16px;
   width: 100%;
-
-  .hover-wrap {
-    width: 100%;
-    position: relative;
-    border-radius: 8px;
-    overflow: hidden;
-    display: flex;
+  transition: background-color 0.4s ease-in-out;
+  display: flex;
     align-items: center;
-    gap: 16px;
-    padding-right: 8px;
-
-    &::before {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border-radius: 8px;
-      background-color: $bc;
-      transform: translateX(calc(-100% + 64px));
-      z-index: 1;
-      transition: transform 0.8s $cubic-btn;
-    }
-
-  }
+    justify-content: center;
 
   &:hover {
-    .hover-wrap::before {
-
-      transform: translateX(0);
-
-    }
-
-    .svg-wrap svg {
-      transform: rotate(45deg);
-    }
+    background-color: $bc;
+    
 
     span {
       color: $text-color;
@@ -239,59 +208,137 @@
 
   }
 
-  .svg-wrap {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    width: 64px;
-    height: 64px;
-    flex-shrink: 0;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-    background: $bc;
-
-    &>svg {
-      width: 24px;
-      height: 24px;
-      transition: transform 0.5s linear;
-    }
-  }
-
   span {
-    transition: color 0.5s linear;
     position: relative;
     z-index: 2;
+    transition: color 0.4s ease-in-out;
     @include subtitle-text;
-    white-space: nowrap;
+    font-size: 14px;
     font-weight: 500;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-right: 20px;
-    padding-left: 20px;
     color: $bc;
+    white-space: nowrap;
   }
 
   @include tablet {
+    padding: 20px 40px;
+    
     width: fit-content;
-    flex: none;
+    
   }
 
   @include laptop {
+    padding: 24px 20px;
+   
     width: 19.6vw;
-
-    .svg-wrap {
-      width: 78px;
-      height: 78px;
-    }
-
     span {
       font-size: 1.25vw;
     }
+   
   }
 }
+// .general-btn {
+//   display: flex;
+//   padding: 8px 8px;
+
+
+//   border-radius: 12px;
+//   background: $text-color;
+//   width: 100%;
+
+//   .hover-wrap {
+//     width: 100%;
+//     position: relative;
+//     border-radius: 8px;
+//     overflow: hidden;
+//     display: flex;
+//     align-items: center;
+//     gap: 16px;
+//     padding-right: 8px;
+
+//     &::before {
+//       content: "";
+//       position: absolute;
+//       width: 100%;
+//       height: 100%;
+//       border-radius: 8px;
+//       background-color: $bc;
+//       transform: translateX(calc(-100% + 64px));
+//       z-index: 1;
+//       transition: transform 0.8s $cubic-btn;
+//     }
+
+//   }
+
+//   &:hover {
+//     .hover-wrap::before {
+
+//       transform: translateX(0);
+
+//     }
+
+//     .svg-wrap svg {
+//       transform: rotate(45deg);
+//     }
+
+//     span {
+//       color: $text-color;
+//     }
+
+//   }
+
+//   .svg-wrap {
+//     position: relative;
+//     z-index: 2;
+//     display: flex;
+//     width: 64px;
+//     height: 64px;
+//     flex-shrink: 0;
+//     justify-content: center;
+//     align-items: center;
+//     border-radius: 8px;
+//     background: $bc;
+
+//     &>svg {
+//       width: 24px;
+//       height: 24px;
+//       transition: transform 0.5s linear;
+//     }
+//   }
+
+//   span {
+//     transition: color 0.5s linear;
+//     position: relative;
+//     z-index: 2;
+//     @include subtitle-text;
+//     white-space: nowrap;
+//     font-weight: 500;
+//     flex: 1;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     padding-right: 20px;
+//     padding-left: 20px;
+//     color: $bc;
+//   }
+
+//   @include tablet {
+//     width: fit-content;
+//     flex: none;
+//   }
+
+//   @include laptop {
+//     width: 19.6vw;
+
+//     .svg-wrap {
+//       width: 78px;
+//       height: 78px;
+//     }
+
+//     span {
+//       font-size: 1.25vw;
+//     }
+//   }
+// }
 
 .big-b {
   pointer-events: none;

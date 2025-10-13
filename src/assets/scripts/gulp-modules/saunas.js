@@ -5,90 +5,90 @@ import { gsap, ScrollTrigger, CustomEase, CSSRulePlugin } from 'gsap/all';
 gsap.registerPlugin(ScrollTrigger, CustomEase, CSSRulePlugin);
 
 // 1) Ініціалізація Swiper (перед GSAP-логікою!)
-const swiper = new Swiper('.swiper-hero', {
-  speed: 700,
-  slidesPerView: 1,
-  spaceBetween: 0,
-  allowTouchMove: false,
-});
+// const swiper = new Swiper('.swiper-hero', {
+//   speed: 700,
+//   slidesPerView: 1,
+//   spaceBetween: 0,
+//   allowTouchMove: false,
+// });
 
-// Підрахунок слайдів
-const slidesCount = swiper.slides.length;
-gsap.set('.glampings-total', {
-  height: window.innerHeight * 1.4 * slidesCount,
-});
-const totalEl = document.querySelector('.total-slides-number');
-if (totalEl) totalEl.textContent = String(slidesCount).padStart(2, '0');
+// // Підрахунок слайдів
+// const slidesCount = swiper.slides.length;
+// gsap.set('.glampings-total', {
+//   height: window.innerHeight * 1.4 * slidesCount,
+// });
+// const totalEl = document.querySelector('.total-slides-number');
+// if (totalEl) totalEl.textContent = String(slidesCount).padStart(2, '0');
 
-// DOM-елементи
-const titleEl = document.querySelector('.section-title');
-const descrValues = Array.from(document.querySelectorAll('.glampings-descr__value'));
-const currentEl = document.querySelector('.current-slides-number');
+// // DOM-елементи
+// const titleEl = document.querySelector('.section-title');
+// const descrValues = Array.from(document.querySelectorAll('.glampings-descr__value'));
+// const currentEl = document.querySelector('.current-slides-number');
 
-let currentIndex = 0;
-let contentTween = null;
+// let currentIndex = 0;
+// let contentTween = null;
 
-// оновлення контенту
-function updateContent(index) {
-  if (index === currentIndex) return;
-  currentIndex = index;
+// // оновлення контенту
+// function updateContent(index) {
+//   if (index === currentIndex) return;
+//   currentIndex = index;
 
-  const slide = swiper.slides[index];
-  const data = slide ? slide.dataset : {};
-  const newTitle = data.title || slide.querySelector('img')?.alt || titleEl.textContent;
-  const newFrom = data.from || descrValues[0].textContent;
-  const newArea = data.area || descrValues[1].textContent;
-  const newLink = data.link || null;
+//   const slide = swiper.slides[index];
+//   const data = slide ? slide.dataset : {};
+//   const newTitle = data.title || slide.querySelector('img')?.alt || titleEl.textContent;
+//   const newFrom = data.from || descrValues[0].textContent;
+//   const newArea = data.area || descrValues[1].textContent;
+//   const newLink = data.link || null;
 
-  if (contentTween) contentTween.kill();
-  const group = [titleEl, ...descrValues, currentEl].filter(Boolean);
+//   if (contentTween) contentTween.kill();
+//   const group = [titleEl, ...descrValues, currentEl].filter(Boolean);
 
-  contentTween = gsap.timeline({ defaults: { ease: 'power2.inOut' } });
-  contentTween.fromTo(group, { y: 0, opacity: 1 }, { y: -16, opacity: 0, duration: 0.5 });
-  contentTween.call(() => {
-    titleEl.textContent = newTitle;
-    descrValues[0].textContent = newFrom;
-    descrValues[1].textContent = newArea;
-    currentEl.textContent = String(index + 1).padStart(2, '0');
-    if (newLink !== null) {
-      const btn = document.querySelector('[data-house-link]');
-      if (btn) btn.href = newLink;
-    }
-  });
-  contentTween.fromTo(
-    group,
-    { y: 16, opacity: 0 },
-    { y: 0, opacity: 1, duration: 0.34, stagger: 0.04 },
-  );
-}
+//   contentTween = gsap.timeline({ defaults: { ease: 'power2.inOut' } });
+//   contentTween.fromTo(group, { y: 0, opacity: 1 }, { y: -16, opacity: 0, duration: 0.5 });
+//   contentTween.call(() => {
+//     titleEl.textContent = newTitle;
+//     descrValues[0].textContent = newFrom;
+//     descrValues[1].textContent = newArea;
+//     currentEl.textContent = String(index + 1).padStart(2, '0');
+//     if (newLink !== null) {
+//       const btn = document.querySelector('[data-house-link]');
+//       if (btn) btn.href = newLink;
+//     }
+//   });
+//   contentTween.fromTo(
+//     group,
+//     { y: 16, opacity: 0 },
+//     { y: 0, opacity: 1, duration: 0.34, stagger: 0.04 },
+//   );
+// }
 
-// ScrollTrigger + snap
-const intervals = Math.max(1, slidesCount);
+// // ScrollTrigger + snap
+// const intervals = Math.max(1, slidesCount);
 
-ScrollTrigger.create({
-  trigger: '.glampings-total',
-  start: 'top top',
-  end: 'bottom bottom',
+// ScrollTrigger.create({
+//   trigger: '.glampings-total',
+//   start: 'top top',
+//   end: 'bottom bottom',
 
-  pin: '.hero.glampings',
-  scrub: true,
-  snap: {
-    snapTo: value => {
-      const step = 1 / (slidesCount - 1);
-      return Math.round(value / step) * step;
-    },
-    duration: 0.5,
-    ease: 'power1.inOut',
-  },
-  onUpdate(self) {
-    // const reducedProgress = gsap.utils.mapRange(0, 0.9, 0, 1, self.progress);
-    const idx = Math.round(self.progress * (slidesCount - 1));
-    if (idx !== currentIndex) {
-      swiper.slideTo(idx);
-      updateContent(idx);
-    }
-  },
-});
+//   pin: '.hero.glampings',
+//   scrub: true,
+//   snap: {
+//     snapTo: value => {
+//       const step = 1 / (slidesCount - 1);
+//       return Math.round(value / step) * step;
+//     },
+//     duration: 0.5,
+//     ease: 'power1.inOut',
+//   },
+//   onUpdate(self) {
+//     // const reducedProgress = gsap.utils.mapRange(0, 0.9, 0, 1, self.progress);
+//     const idx = Math.round(self.progress * (slidesCount - 1));
+//     swiper.setTranslate(-self.progress * (slidesCount - 1) * swiper.width);
+//     if (idx !== currentIndex) {
+//       updateContent(idx);
+//     }
+//   },
+// });
 
 // Перерендер при ресайзі — оновлюємо ScrollTrigger
 // window.addEventListener('resize', () => {
@@ -129,6 +129,7 @@ const swiperDiscover = new Swiper('.swiper-discover', {
   slidesPerView: 1.15,
   spaceBetween: 16,
   loop: false,
+  
   navigation: {
     nextEl: '[data-discover-next-btn]',
     prevEl: '[data-discover-prev-btn]',

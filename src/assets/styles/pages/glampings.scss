@@ -29,7 +29,8 @@
 }
 
 .glampings {
-
+  height: 100dvh;
+  transition: height 0.4s linear;
   position: relative;
 
   .section-title,
