@@ -89,7 +89,7 @@
 
 .section-title {
   @include section-title;
-  margin-bottom: 20px;
+  padding-bottom: 20px;
 
   // clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
   &>span {
@@ -188,6 +188,7 @@
     padding: 40px;
   }
 }
+
 .general-btn {
   border-radius: 8px;
   background-color: $text-color;
@@ -195,12 +196,12 @@
   width: 100%;
   transition: background-color 0.4s ease-in-out;
   display: flex;
-    align-items: center;
-    justify-content: center;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
     background-color: $bc;
-    
+
 
     span {
       color: $text-color;
@@ -221,21 +222,23 @@
 
   @include tablet {
     padding: 20px 40px;
-    
+
     width: fit-content;
-    
+
   }
 
   @include laptop {
     padding: 24px 20px;
-   
+
     width: 19.6vw;
+
     span {
       font-size: 1.25vw;
     }
-   
+
   }
 }
+
 // .general-btn {
 //   display: flex;
 //   padding: 8px 8px;
@@ -566,6 +569,7 @@
 
   .section-title {
     margin-bottom: 0;
+    padding-bottom: 0;
   }
 }
 
