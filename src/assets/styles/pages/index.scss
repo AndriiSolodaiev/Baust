@@ -65,6 +65,7 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
+  transform: translateZ(0);
 
   &::after {
     content: "";
@@ -82,9 +83,22 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-
+    transform: translateZ(0);
   }
 
+  video.mobile {
+    @include tablet {
+      display: none;
+    }
+  }
+
+  video.tablet {
+    display: none;
+
+    @include tablet {
+      display: block;
+    }
+  }
 }
 
 .section-title {
@@ -146,6 +160,16 @@
   }
 
   @include laptop {
+    position: absolute;
+    right: 40px;
+    padding-left: 0px;
+    max-width: 19.6vw;
+    top: 220px;
+  }
+}
+
+.hero .section-descr {
+  @media screen and (min-width: 1024px) {
     position: absolute;
     right: 40px;
     padding-left: 0px;
