@@ -39,7 +39,11 @@ export const contactFormFooter = (formRef, onSuccess) => {
           rule: yup
             .string()
             .required(i18next.t('required'))
-            .min(17, i18next.t('field_too_short', { cnt: 19 - 7 })),
+            .test('phone-validation', i18next.t('field_too_short', { cnt: 10 }), function(value) {
+              if (!value) return false;
+              const digitsOnly = value.replace(/\D/g, '');
+              return digitsOnly.length >= 10;
+            }),
 
           defaultMessage: i18next.t('phone'),
           valid: false,
