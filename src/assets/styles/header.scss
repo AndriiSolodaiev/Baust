@@ -10,18 +10,16 @@
 .header-bg {
   display: flex;
   align-items: stretch;
-  border-bottom: 1px solid rgba(242, 239, 233, 0.10);
+  border-bottom: 1px solid rgba(242, 239, 233, 0.1);
   height: 77px;
   transition: all 0.4s ease-out;
 
   @include tablet {
     height: 124px;
-
   }
 
   @include laptop {
     height: 137px;
-
   }
 
   &.scroll-down {
@@ -37,7 +35,6 @@
       height: 100px;
     }
   }
-
 }
 
 .logo-wrap {
@@ -45,7 +42,7 @@
   align-items: center;
   height: 100%;
   padding-right: 16px;
-  border-right: 1px solid rgba(242, 239, 233, 0.10);
+  border-right: 1px solid rgba(242, 239, 233, 0.1);
 
   @include tablet {
     padding-right: 30px;
@@ -60,10 +57,20 @@
     }
   }
 
-  span {
-    @include block-title;
-    text-transform: none;
-    font-weight: 700;
+  // span {
+  //   @include block-title;
+  //   text-transform: none;
+  //   font-weight: 700;
+  // }
+
+  .logo-img {
+    width: 40px;
+    height: 40px;
+
+    @include tablet {
+      width: 60px;
+      height: 60px;
+    }
   }
 }
 
@@ -93,7 +100,6 @@
     justify-content: space-between;
     align-items: center;
     padding-right: 40px;
-
   }
 }
 
@@ -116,7 +122,7 @@
 
     a::before,
     a::after {
-      content: "";
+      content: '';
       position: absolute;
       display: block;
       border: 0 solid transparent;
@@ -124,7 +130,6 @@
       height: 0%;
       transition: all 0.5s ease;
       border-radius: 12px;
-
     }
 
     a::after {
@@ -151,7 +156,6 @@
     a:hover {
       text-shadow: 0 0 10px #8a8a8a, 0 0 20px #8a8a8a, 0 0 30px #8a8a8a;
     }
-
   }
 }
 
@@ -169,14 +173,13 @@
   }
 
   &__item {
-
     display: flex;
     width: 32px;
     height: 32px;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    border: 0.75px solid rgba(242, 239, 233, 0.10);
+    border: 0.75px solid rgba(242, 239, 233, 0.1);
     position: relative;
     overflow: hidden;
 
@@ -213,24 +216,20 @@
 
     &::after {
       transform: rotate(180deg) translate(0%, 100%);
-
     }
 
     &:hover {
       // border-color: #9691912d;
 
       &::before {
-
         transform: rotate(180deg) translate(0%, -50%);
       }
 
       &::after {
-
         transform: rotate(180deg) translate(0%, 50%);
       }
 
       svg {
-
         transform: scale(1.4);
       }
     }
@@ -259,13 +258,13 @@
 
 .header-btn {
   border-radius: 8px;
-  border: 1px solid rgba(242, 239, 233, 0.10);
+  border: 1px solid rgba(242, 239, 233, 0.1);
   // background: $text-color;
   padding: 16px;
   margin-left: 16px;
   display: flex;
-    align-items: center;
-    justify-content: center;
+  align-items: center;
+  justify-content: center;
   transition: background-color 0.4s ease-in-out;
   // .hover-wrap {
   //   padding: 8px;
@@ -276,7 +275,6 @@
   //   display: flex;
   //   align-items: center;
   //   justify-content: center;
-
 
   //   &::before {
   //     content: "";
@@ -299,7 +297,6 @@
     span {
       color: $bc;
     }
-
   }
 
   span {
@@ -336,7 +333,6 @@
 }
 
 .menu-btn {
-
   display: flex;
   align-items: center;
   gap: 8px;
@@ -361,7 +357,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 50%;
-  background-color: rgba(242, 239, 233, 0.10);
+  background-color: rgba(242, 239, 233, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -389,22 +385,16 @@
 
   &::after {
     transform: rotate(180deg) translate(0%, 100%);
-
   }
 
   &:hover {
-
-
     &::before {
-
       transform: rotate(180deg) translate(0%, -50%);
     }
 
     &::after {
-
       transform: rotate(180deg) translate(0%, 50%);
     }
-
   }
 
   span {
@@ -456,7 +446,8 @@
   display: flex;
   flex-direction: column;
 
-  @include tablet {}
+  @include tablet {
+  }
 
   @include laptop {
     display: none;
@@ -467,11 +458,9 @@
     pointer-events: none;
     opacity: 0;
   }
-
 }
 
 .menu-container {
-
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -485,7 +474,6 @@
     gap: 40px;
     padding: 30px;
   }
-
 }
 
 .menu-item {
@@ -509,7 +497,6 @@
     transform-origin: center;
     backface-visibility: hidden;
     color: $text-color;
-
   }
 
   .menu-face--front {
@@ -524,19 +511,16 @@
     opacity: 0;
     text-decoration: underline;
   }
-
 }
 
 .menu-bottom {
-
-  border-top: 1px solid rgba(242, 239, 233, 0.10);
-
+  border-top: 1px solid rgba(242, 239, 233, 0.1);
 }
 
 .social-block {
   padding: 16px;
   width: fit-content;
-  border-right: 1px solid rgba(242, 239, 233, 0.10);
+  border-right: 1px solid rgba(242, 239, 233, 0.1);
 
   @include tablet {
     padding: 30px;
@@ -561,7 +545,6 @@
     display: flex;
   }
 }
-
 
 .accent-color {
   color: $accent-color;
