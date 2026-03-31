@@ -139,3 +139,49 @@ gsap.to(".header", {
   duration: 1.5,
   ease: "power3.out",
  translateY:0})
+
+
+ document.addEventListener('DOMContentLoaded', () => {
+  const availableLangs = ['en', 'de'];
+  const path = window.location.pathname;
+
+  // 1. Визначаємо поточну та цільову мови один раз для всієї сторінки
+  const currentLang = availableLangs.find(l => 
+    path === `/${l}` || path.startsWith(`/${l}/`)
+  ) || 'en';
+  
+  const targetLang = currentLang === 'en' ? 'de' : 'en';
+
+  // 2. Знаходимо всі перемикачі на сторінці
+  const langWrappers = document.querySelectorAll('.lang-wrapper');
+
+  langWrappers.forEach(wrapper => {
+    const currentBtn = wrapper.querySelector('.lang-btn.current');
+    const targetBtn = wrapper.querySelector('.lang-btn.target');
+
+    // Налаштовуємо текст
+    currentBtn.textContent = currentLang.toUpperCase();
+    targetBtn.textContent = targetLang.toUpperCase();
+    targetBtn.setAttribute('data-lang', targetLang);
+
+    // Додаємо обробник кліку для кожного
+    targetBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const nextLang = targetBtn.getAttribute('data-lang');
+      
+      let newPath;
+      const parts = path.split('/').filter(Boolean);
+
+      // Логіка заміни сегмента в URL
+      if (availableLangs.includes(parts[0])) {
+        parts[0] = nextLang;
+        newPath = '/' + parts.join('/');
+      } else {
+        // Якщо мови в URL немає, додаємо її (враховуємо головну сторінку)
+        newPath = `/${nextLang}${path === '/' ? '' : path}`;
+      }
+
+      window.location.href = window.location.origin + newPath;
+    });
+  });
+});

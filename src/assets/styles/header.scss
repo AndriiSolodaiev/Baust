@@ -106,7 +106,7 @@
   margin-right: auto;
 
   @include laptop {
-
+    margin-right: 0;
     a {
       text-decoration: none;
       position: relative;
@@ -565,4 +565,92 @@
 
 .accent-color {
   color: $accent-color;
+}
+
+:root {
+  --size: 40px; /* Розмір початкового квадрата */
+  --bg-glass: rgba(255, 255, 255, 0.07);
+  --bg-hover: rgba(255, 255, 255, 0.12);
+  --blur: 15px;
+  --radius: 8px; /* Невелике зкруглення під твої кнопки */
+}
+@media screen and (min-width: 768px)  {
+  :root {
+  --size: 60px; }
+}
+
+.lang-container {
+  display: inline-block;
+  position: relative;
+  /* Щоб розширення кнопки не штовхало контент нижче, 
+     можна додати фіксовану висоту контейнеру або absolute позиціонування */
+  height: var(--size); 
+  width: var(--size);
+  margin-right: auto;
+  margin-left: auto;
+  @include laptop {
+    margin-right: 0;
+  margin-left: 0;
+  }
+}
+
+.lang-wrapper {
+  display: flex;
+  flex-direction: column; /* Вертикальне розташування */
+  width: var(--size);
+  height: var(--size); /* Початковий квадрат */
+  // background-color: var(--bg-glass);
+  // backdrop-filter: blur(var(--blur));
+  // -webkit-backdrop-filter: blur(var(--blur));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+  position: absolute; /* Щоб кнопка "випадала" поверх контенту */
+  top: 0;
+  right: 0;
+}
+
+/* Вертикальне видовження при ховері */
+.lang-wrapper:hover {
+  height: calc(var(--size) * 2); /* Висота стає як два квадрати */
+  background-color: var(--bg-hover);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.lang-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--size);
+  min-height: var(--size);
+  color: $text-color;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease, transform 0.4s ease;
+  @include tablet {
+    font-size: 16px;
+  }
+}
+
+/* Друга мова прихована (знизу) */
+.lang-btn.target {
+  opacity: 0;
+  transform: translateY(-10px); /* Легкий ефект підйому при появі */
+  pointer-events: none;
+}
+
+.lang-wrapper:hover .lang-btn.target {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+.lang-wrapper:hover{
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
+}
+.lang-btn.target:hover {
+  background: rgba(255, 255, 255, 0.1); /* Підсвітка при наведенні на вибір */
 }
